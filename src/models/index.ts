@@ -9,6 +9,7 @@ export const startSequelize = (db_name: string, db_password: string, db_hostname
         host: db_hostname,
     })
 
+    //This is commented for the moment when the models has been created
    /*  for(const initModel of models) {
         initModel(sequelize);
     }
