@@ -7,7 +7,6 @@
     "dev": "concurrently \"tsc --watch\" \"nodemon dist/index.js\" ",
     "test": "jest --watch",
     "test-coverage": "jest -coverage"
-
   },
   "repository": {
     "type": "git",
@@ -23,6 +22,7 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "firebase-admin": "^11.4.1",
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.28.0"

@@ -1,8 +1,9 @@
 import { Sequelize } from "sequelize";
+import { initUserModel } from "./user.model";
 
 export let sequelize: Sequelize;
 
-//const models = [];
+const models = [initUserModel];
 export const startSequelize = (db_name: string, db_password: string, db_hostname: string, db_username: string) => {
     sequelize = new Sequelize(db_name, db_username, db_password, {
         dialect: 'postgres',
