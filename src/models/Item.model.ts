@@ -17,7 +17,7 @@ export class Item extends Model<
   declare is_deleted: CreationOptional<boolean>;
 }
 
-export const initItemModel = (sequelize: Sequelize) => {
+export const initItemModel = async (sequelize: Sequelize) => {
   Item.init(
     {
       id: {
@@ -42,4 +42,6 @@ export const initItemModel = (sequelize: Sequelize) => {
       sequelize,
     }
   );
+
+  await Item.sync();
 };
