@@ -12,7 +12,7 @@ export class Item extends Model<
   InferCreationAttributes<Item>
 > {
   declare id: CreationOptional<number>;
-  declare name: number;
+  declare name: string;
   declare price: number;
   declare is_deleted: CreationOptional<boolean>;
 }
