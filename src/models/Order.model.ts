@@ -18,7 +18,7 @@ export class Order extends Model<
   declare restaurant_id: number;
 }
 
-export const initOrderModel = (sequelize: Sequelize) => {
+export const initOrderModel = async (sequelize: Sequelize) => {
   Order.init(
     {
       id: {
@@ -47,4 +47,6 @@ export const initOrderModel = (sequelize: Sequelize) => {
       sequelize,
     }
   );
+
+  await Order.sync();
 };
