@@ -7,32 +7,33 @@ import {
     Sequelize
 } from "sequelize";
 
-export class Owner extends Model<InferAttributes<Owner>, InferCreationAttributes<Owner>> {
+export class OrderItems extends Model<InferAttributes<OrderItems>, InferCreationAttributes<OrderItems>> {
     declare id: CreationOptional<number>;
-    declare full_name: string;
-    declare phone: number;
-    declare user_id: number;
+    declare order_id: number;
+    declare item_id: number;
+    declare quantity: CreationOptional<number>;
     declare is_Deleted: CreationOptional<boolean>;
 }
 export const initAdminsModel = async (sequelize: Sequelize) => {
-    Owner.init(
+    OrderItems.init(
         {
             id: {
                 type: DataTypes.INTEGER,
                 primaryKey: true,
                 autoIncrement: true,
             },
-            full_name: {
-                type: DataTypes.STRING,
-                allowNull: false
+            order_id: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
             },
-            phone: {
+            item_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false
             },
-            user_id: {
+            quantity: {
                 type: DataTypes.INTEGER,
-                allowNull: false
+                allowNull: false,
+                defaultValue: 1
             },
             is_Deleted: {
                 type: DataTypes.BOOLEAN,
@@ -42,9 +43,9 @@ export const initAdminsModel = async (sequelize: Sequelize) => {
 
         },
         {
-            tableName: "owner",
+            tableName: "order_items",
             sequelize: sequelize,
         }
     );
-    await Owner.sync();
+    await OrderItems.sync();
 };
