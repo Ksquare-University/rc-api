@@ -9,6 +9,7 @@ import { initBillingDetailsModel } from './BillingDetails.model';
 import { initItemModel } from './Item.model';
 import { initPaymentMethodModel } from './PaymentMethod.model';
 import { initOrderModel } from './Order.model';
+import { initCourierModel } from './Courier.model';
 
 export let sequelize: Sequelize;
 const models = [
@@ -22,6 +23,7 @@ const models = [
   initItemModel,
   initPaymentMethodModel,
   initOrderModel,
+  initCourierModel,
 ];
 
 export const startSequelize = (
