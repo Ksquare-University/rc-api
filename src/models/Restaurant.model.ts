@@ -3,12 +3,13 @@ import { Model, InferAttributes, InferCreationAttributes, CreationOptional, Data
 
 export class Restaurant extends Model<InferAttributes<Restaurant>, InferCreationAttributes<Restaurant>> {
 
-    declare id: number;
+    declare id: CreationOptional<number>;
     declare name: string;
+    declare description: string;
     declare city_id: number;
     declare phone_number: string;
     declare user_id: number;
-    declare is_deleted: boolean;
+    declare is_deleted: CreationOptional<boolean>;
 
 }
 
@@ -21,11 +22,14 @@ export const initRestaurantModel = async (sequelize: Sequelize) => {
             primaryKey: true
         },
         name: DataTypes.STRING,
+        description: DataTypes.STRING,
         city_id: DataTypes.INTEGER,
         phone_number: DataTypes.STRING,
         user_id: DataTypes.INTEGER,
-        is_deleted: DataTypes.BOOLEAN
-    
+        is_deleted: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        }
 }, {
     sequelize // Instance of sequelize that reflects the connection
 })
