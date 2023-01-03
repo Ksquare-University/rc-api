@@ -28,6 +28,7 @@ export const initPaymentMethodModel = async (sequelize: Sequelize) => {
       billingDetailsId: DataTypes.INTEGER,
     },
     {
+      tableName: "payment_method",
       sequelize, // Instance of sequelize that reflects the connection
     }
   );
