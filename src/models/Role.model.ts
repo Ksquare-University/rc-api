@@ -3,7 +3,7 @@ import { Model, InferAttributes, InferCreationAttributes, CreationOptional, Data
 
 export class Role extends Model<InferAttributes<Role>, InferCreationAttributes<Role>> {
 
-    declare id: number;
+    declare id: CreationOptional<number>;
     declare role: string;
 
 }
