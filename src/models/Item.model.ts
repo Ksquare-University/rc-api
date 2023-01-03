@@ -39,6 +39,7 @@ export const initItemModel = async (sequelize: Sequelize) => {
       },
     },
     {
+      tableName: 'item',
       sequelize,
     }
   );
