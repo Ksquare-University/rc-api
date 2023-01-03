@@ -3,7 +3,7 @@ import { Model, InferAttributes, InferCreationAttributes, CreationOptional, Data
 
 export class Sale extends Model<InferAttributes<Sale>, InferCreationAttributes<Sale>> {
 
-    declare id: number;
+    declare id: CreationOptional<boolean>;
     declare order_id: number;
     declare total_price: number;
     declare total_items: number;
