@@ -18,7 +18,7 @@ export const initOpeningDaysModel = async (sequelize: Sequelize) => {
         },
         restaurant_id :{
             type:DataTypes.INTEGER,
-            autoIncrement: true,
+
         }
 
 }, {
