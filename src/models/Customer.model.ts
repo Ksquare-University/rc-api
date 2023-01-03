@@ -21,6 +21,7 @@ export const initClientModel = async (sequelize: Sequelize) => {
         },
         full_name: {
             type: DataTypes.STRING,
+            allowNull: false
         },
         phone_number: {
             type: DataTypes.NUMBER,
