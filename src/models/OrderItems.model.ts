@@ -12,7 +12,7 @@ export class OrderItems extends Model<InferAttributes<OrderItems>, InferCreation
     declare order_id: number;
     declare item_id: number;
     declare quantity: CreationOptional<number>;
-    declare is_Deleted: CreationOptional<boolean>;
+    declare is_deleted: CreationOptional<boolean>;
 }
 export const initAdminsModel = async (sequelize: Sequelize) => {
     OrderItems.init(
@@ -35,7 +35,7 @@ export const initAdminsModel = async (sequelize: Sequelize) => {
                 allowNull: false,
                 defaultValue: 1
             },
-            is_Deleted: {
+            is_deleted: {
                 type: DataTypes.BOOLEAN,
                 allowNull: false,
                 defaultValue: false
