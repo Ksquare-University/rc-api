@@ -11,7 +11,7 @@ export class Sale extends Model<InferAttributes<Sale>, InferCreationAttributes<S
     declare payment_id: number; 
     declare address: string;
     declare city_id: number;
-    declare refrences: string;
+    declare refrences: CreationOptional<boolean>;
     declare is_deleted: CreationOptional<boolean>;
 
 }
