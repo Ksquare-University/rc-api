@@ -35,6 +35,7 @@ export const initClientModel = async (sequelize: Sequelize) => {
         }
     
 }, {
+    tableName: 'customer',
     sequelize // Instance of sequelize that reflects the connection
 })
 
