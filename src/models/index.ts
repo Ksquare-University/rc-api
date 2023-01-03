@@ -1,12 +1,13 @@
-import { Sequelize } from 'sequelize';
-import { initClientModel } from './Customer.model';
-import { initSaleModel } from './Sale.model';
-import { initUserModel } from './user.model';
-import { initCity } from './city.model';
-import { initClientAddressModel } from './ClientAddress.model';
-import { initRestaurantModel } from './Restaurant.model';
-import { initBillingDetailsModel } from './BillingDetails.model';
-import { initItemModel } from './Item.model';
+import { Sequelize } from "sequelize";
+import { initClientModel } from "./Customer.model";
+import { initSaleModel } from "./Sale.model";
+import { initUserModel } from "./user.model";
+import { initCity } from "./city.model";
+import { initClientAddressModel } from "./ClientAddress.model";
+import { initRestaurantModel } from "./Restaurant.model";
+import { initBillingDetailsModel } from "./BillingDetails.model";
+import { initItemModel } from "./Item.model";
+import { initPaymentMethodModel } from "./PaymentMethod.model";
 
 export let sequelize: Sequelize;
 const models = [
@@ -18,6 +19,7 @@ const models = [
   initRestaurantModel,
   initBillingDetailsModel,
   initItemModel,
+  initPaymentMethodModel,
 ];
 
 export const startSequelize = (
@@ -27,7 +29,7 @@ export const startSequelize = (
   db_username: string
 ) => {
   sequelize = new Sequelize(db_name, db_username, db_password, {
-    dialect: 'postgres',
+    dialect: "postgres",
     host: db_hostname,
   });
 
