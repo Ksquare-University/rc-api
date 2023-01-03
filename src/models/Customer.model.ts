@@ -3,11 +3,11 @@ import { Model, InferAttributes, InferCreationAttributes, CreationOptional, Data
 
 export class Client extends Model<InferAttributes<Client>, InferCreationAttributes<Client>> {
 
-    declare id: number;
+    declare id: CreationOptional<boolean>;
     declare full_name: string;
     declare phone_number: number;
-    declare user_id: number;
-    declare status: boolean; 
+    declare user_id: string;
+    declare status: CreationOptional<boolean>; 
 
 }
 
@@ -28,11 +28,12 @@ export const initClientModel = async (sequelize: Sequelize) => {
             allowNull: false,
         },
         user_id: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         status: {
             type: DataTypes.BOOLEAN,
+            defaultValue: false
         }
     
 }, {
