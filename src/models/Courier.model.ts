@@ -29,6 +29,7 @@ export const initCourierModel = async (sequelize: Sequelize) => {
       },
     },
     {
+      tableName: 'courier',
       sequelize,
     }
   );
