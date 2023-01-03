@@ -19,6 +19,7 @@ export const initRoleModel = async (sequelize: Sequelize) => {
         role: DataTypes.STRING
     
 }, {
+    tableName: "Role"
     sequelize // Instance of sequelize that reflects the connection
 })
 
