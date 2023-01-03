@@ -1,4 +1,6 @@
 import { Sequelize } from "sequelize";
+import { initClientModel } from "./Customer.model";
+import { initSaleModel } from "./Sale.model";
 
 export let sequelize: Sequelize;
 
