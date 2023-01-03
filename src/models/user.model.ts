@@ -16,10 +16,11 @@ export const initUserModel = async (sequelize: Sequelize) => {
         id: {
             type: DataTypes.STRING,
             allowNull: false,
-            primaryKey: true
+            primaryKey: true,
         },
         role: {
             type: DataTypes.STRING,
+            allowNull: false,
         },
         email: {
             type: DataTypes.STRING,
@@ -34,6 +35,7 @@ export const initUserModel = async (sequelize: Sequelize) => {
             defaultValue: false,
         }
 }, { 
+    tableName: 'users',
     sequelize
 });
     await User.sync();
