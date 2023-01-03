@@ -44,6 +44,7 @@ export const initOrderModel = async (sequelize: Sequelize) => {
       },
     },
     {
+      tableName: 'order',
       sequelize,
     }
   );
