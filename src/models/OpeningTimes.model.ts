@@ -1,15 +1,15 @@
 import { Model, InferAttributes, InferCreationAttributes, CreationOptional, DataTypes, Sequelize } from "sequelize";
 
 
-export class OpeningDays extends Model<InferAttributes<OpeningDays>, InferCreationAttributes<OpeningDays>> {
+export class OpeningTimes extends Model<InferAttributes<OpeningTimes>, InferCreationAttributes<OpeningTimes>> {
 
     declare id: number;
     declare restaurant_id : number;
     declare is_deleted: CreationOptional<boolean>;
 }
 
-export const initOpeningDaysModel = async (sequelize: Sequelize) => {
-    OpeningDays.init({
+export const initOpeningTimesModel = async (sequelize: Sequelize) => {
+    OpeningTimes.init({
 
         id: {
             type: DataTypes.INTEGER,
@@ -19,12 +19,11 @@ export const initOpeningDaysModel = async (sequelize: Sequelize) => {
         restaurant_id :{
             type:DataTypes.INTEGER,
             autoIncrement: true,
-        }
-
+        },
 }, {
     sequelize // Instance of sequelize that reflects the connection
 })
 
-await OpeningDays.sync();
+await OpeningTimes.sync();
 
 }
