@@ -36,6 +36,7 @@ export const initBillingDetailsModel = async (sequelize: Sequelize) => {
       clientId: DataTypes.INTEGER,
     },
     {
+      tableName: "billing_details",
       sequelize, // Instance of sequelize that reflects the connection
     }
   );
