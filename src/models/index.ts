@@ -6,7 +6,7 @@ import { initCity } from "./city.model";
 import { initClientAddressModel } from "./ClientAddress.model";
 
 export let sequelize: Sequelize;
-const models = [initCity, initUserModel, initClientModel, initSaleModel];
+const models = [initCity, initUserModel, initClientModel, initSaleModel, initClientAddressModel];
 
 export const startSequelize = (db_name: string, db_password: string, db_hostname: string, db_username: string) => {
     sequelize = new Sequelize(db_name, db_username, db_password, {
