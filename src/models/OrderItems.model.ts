@@ -14,7 +14,7 @@ export class OrderItems extends Model<InferAttributes<OrderItems>, InferCreation
     declare quantity: CreationOptional<number>;
     declare is_deleted: CreationOptional<boolean>;
 }
-export const initAdminsModel = async (sequelize: Sequelize) => {
+export const initOrderItemsModel = async (sequelize: Sequelize) => {
     OrderItems.init(
         {
             id: {
