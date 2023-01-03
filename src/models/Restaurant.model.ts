@@ -31,6 +31,7 @@ export const initRestaurantModel = async (sequelize: Sequelize) => {
             defaultValue: false
         }
 }, {
+    tableName: "Restaurant"
     sequelize // Instance of sequelize that reflects the connection
 })
 
