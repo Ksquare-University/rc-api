@@ -5,6 +5,7 @@ export class OpeningTimes extends Model<InferAttributes<OpeningTimes>, InferCrea
 
     declare id: number;
     declare restaurant_id : number;
+    declare is_deleted: CreationOptional<boolean>;
 }
 
 export const initOpeningTimesModel = async (sequelize: Sequelize) => {
