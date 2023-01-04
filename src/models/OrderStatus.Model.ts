@@ -15,6 +15,7 @@ export const initOrderStatus = (sequelize: Sequelize) => {
         },
         name: {
             type: DataTypes.STRING,
+            allowNull: false
         },
 
 }, { 
