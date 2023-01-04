@@ -19,7 +19,11 @@ export const initOpeningTimesModel = async (sequelize: Sequelize) => {
         restaurant_id :{
             type:DataTypes.INTEGER,
             allowNull: false,
-        }
+        },
+        is_deleted: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+          },
 
 }, {
     tableName: 'opening_times',
