@@ -19,6 +19,7 @@ export const initOrderStatus = (sequelize: Sequelize) => {
         },
 
 }, { 
+    tableName:"order_status",
     sequelize
 })
 }
