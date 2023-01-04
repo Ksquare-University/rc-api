@@ -20,6 +20,10 @@ export const initOpeningDaysModel = async (sequelize: Sequelize) => {
             type:DataTypes.INTEGER,
             allowNull: false,
         },
+        is_deleted: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+          },
 
 }, 
 
