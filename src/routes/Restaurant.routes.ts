@@ -2,7 +2,7 @@ import {Router} from "express";
 import controllers from "../controllers/index";
 
 const router = Router();
-const controller = controllers.restaurantcontrollers;
+const controller = controllers.restaurantcontroller;
 /*TODO: MIDDLEWARES*/
 router.get("/:id",controller.getRestaurantById);
 router.get("/:ownerId",controller.getAllRestaurantsbyOwnerId);
