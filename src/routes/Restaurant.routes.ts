@@ -8,7 +8,6 @@ router.get("/:id",controller.getRestaurantById);
 router.get("/:ownerId",controller.getAllRestaurantsbyOwnerId);
 router.post("/new",controller.createRestaurant);
 router.delete("/:id",controller.deleteRestaurantById);
-router.post("/:id",controller.deleteRestaurantById);
 router.post("/:id",controller.updateRestaurantById);
 
 
