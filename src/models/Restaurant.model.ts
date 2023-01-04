@@ -21,11 +21,20 @@ export const initRestaurantModel = async (sequelize: Sequelize) => {
             autoIncrement: true,
             primaryKey: true
         },
-        name: DataTypes.STRING,
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+            },
         description: DataTypes.STRING,
-        city_id: DataTypes.INTEGER,
+        city_id: { 
+            DataTypes.INTEGER,
+            allowNull: false
+            },
         phone_number: DataTypes.STRING,
-        user_id: DataTypes.INTEGER,
+        user_id: {
+            DataTypes.INTEGER,
+            allowNull: false
+            },
         is_deleted: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
