@@ -17,7 +17,7 @@ export class BillingDetails extends Model<
   declare card_number: number;
   declare cvv: number;
   declare expiration_date: Date;
-  declare client_id: CreationOptional<number>;
+  declare client_id: number;
 }
 
 export const initBillingDetailsModel = async (sequelize: Sequelize) => {
