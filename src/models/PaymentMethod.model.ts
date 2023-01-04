@@ -11,9 +11,9 @@ export class PaymentMethod extends Model<
   InferAttributes<PaymentMethod>,
   InferCreationAttributes<PaymentMethod>
 > {
-  declare id: number;
+  declare id: CreationOptional<number>;
   declare method: string;
-  declare billingDetailsId: number;
+  declare billing_details_id: CreationOptional<number>;
 }
 
 export const initPaymentMethodModel = async (sequelize: Sequelize) => {
@@ -24,11 +24,17 @@ export const initPaymentMethodModel = async (sequelize: Sequelize) => {
         autoIncrement: true,
         primaryKey: true,
       },
-      method: DataTypes.STRING,
-      billingDetailsId: DataTypes.INTEGER,
+      method: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      billing_details_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
     {
-      tableName: "payment_method",
+      tableName: "payment_methods",
       sequelize, // Instance of sequelize that reflects the connection
     }
   );
