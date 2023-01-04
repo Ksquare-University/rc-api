@@ -3,7 +3,7 @@ import { Model, InferAttributes, InferCreationAttributes, CreationOptional, Data
 
 export class OpeningTimes extends Model<InferAttributes<OpeningTimes>, InferCreationAttributes<OpeningTimes>> {
 
-    declare id: number;
+    declare id: CreationOptional<number>;
     declare restaurant_id : number;
     declare is_deleted: CreationOptional<boolean>;
 }

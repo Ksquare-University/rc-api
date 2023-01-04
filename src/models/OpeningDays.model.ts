@@ -3,7 +3,7 @@ import { Model, InferAttributes, InferCreationAttributes, CreationOptional, Data
 
 export class OpeningDays extends Model<InferAttributes<OpeningDays>, InferCreationAttributes<OpeningDays>> {
 
-    declare id: number;
+    declare id: CreationOptional<number>;
     declare restaurant_id : number;
     declare is_deleted: CreationOptional<boolean>;
 }
@@ -18,10 +18,13 @@ export const initOpeningDaysModel = async (sequelize: Sequelize) => {
         },
         restaurant_id :{
             type:DataTypes.INTEGER,
+            allowNull: false,
+        },
 
-        }
+}, 
 
-}, {
+{
+    tableName:'opening_days',
     sequelize // Instance of sequelize that reflects the connection
 })
 
