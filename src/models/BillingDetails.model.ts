@@ -11,13 +11,13 @@ export class BillingDetails extends Model<
   InferAttributes<BillingDetails>,
   InferCreationAttributes<BillingDetails>
 > {
-  declare id: number;
-  declare ownerName: string;
-  declare billingAddress: string;
-  declare cardNumber: number;
+  declare id: CreationOptional<number>;
+  declare owner_name: string;
+  declare billing_address: string;
+  declare card_number: number;
   declare cvv: number;
-  declare expirationDate: Date;
-  declare clientId: number;
+  declare expiration_date: Date;
+  declare client_id: CreationOptional<number>;
 }
 
 export const initBillingDetailsModel = async (sequelize: Sequelize) => {
@@ -28,12 +28,30 @@ export const initBillingDetailsModel = async (sequelize: Sequelize) => {
         autoIncrement: true,
         primaryKey: true,
       },
-      ownerName: DataTypes.STRING,
-      billingAddress: DataTypes.STRING,
-      cardNumber: DataTypes.INTEGER,
-      cvv: DataTypes.INTEGER,
-      expirationDate: DataTypes.DATE,
-      clientId: DataTypes.INTEGER,
+      owner_name: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      billing_addres: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      card_number: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      cvv: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      expiration_date: {
+        type: DataTypes.DATE,
+        allowNull: false,
+      },
+      client_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
     {
       tableName: "billing_details",
