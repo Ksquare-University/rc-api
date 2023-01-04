@@ -13,7 +13,7 @@ export class PaymentMethod extends Model<
 > {
   declare id: CreationOptional<number>;
   declare method: string;
-  declare billing_details_id: CreationOptional<number>;
+  declare billing_details_id: number;
 }
 
 export const initPaymentMethodModel = async (sequelize: Sequelize) => {
