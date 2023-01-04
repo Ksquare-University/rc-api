@@ -1,6 +1,6 @@
 import CityController from "./city.controller";
-import restaurantcontrollers from "./Restaurant.controllers";
+import restaurantcontroller from "./Restaurant.controllers";
 
 export default {
-    CityController,restaurantcontrollers
+    CityController,restaurantcontroller
 }
