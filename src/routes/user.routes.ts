@@ -22,7 +22,7 @@ UserRouter.get('/', async (req: Request, res: Response) => {
 
 // CREATE - [POST]
 // Allow a client to sign up to our system
-UserRouter.post('/new/client', async (req:Request, res: Response) => {
+UserRouter.post('/client', async (req:Request, res: Response) => {
     const { displayName, email, password }  = req.body
     
     if (!displayName || !email || !password) {
@@ -43,7 +43,7 @@ UserRouter.post('/new/client', async (req:Request, res: Response) => {
 })
 
 // Only allow admins and superadmins to create managers (rest owners)
-UserRouter.post('/new/manager', async (req:Request, res: Response) => {
+UserRouter.post('/manager', async (req:Request, res: Response) => {
     const { displayName, email, password }  = req.body
     
     if (!displayName || !email || !password) {
@@ -64,7 +64,7 @@ UserRouter.post('/new/manager', async (req:Request, res: Response) => {
 })
 
 // Only allow super admin (?) to create new admins
-UserRouter.post('/new/admin', async (req:Request, res: Response) => {
+UserRouter.post('/admin', async (req:Request, res: Response) => {
     const { displayName, email, password  }  = req.body
     
     if (!displayName || !email || !password) {
