@@ -1,7 +1,10 @@
 import dotenv from "dotenv";
 dotenv.config();
-import { startSequelize  } from './models';
-import app from './app';
+import { startSequelize } from "./models";
+import * as admin from "firebase-admin"; // npm install firebase-admin --save
+import app from "./app";
+
+admin.initializeApp(); // For firebase => loads credentials
 
 const PORT = <string>process.env.PORT;
 const DB = <string>process.env.DB_NAME;
