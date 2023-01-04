@@ -15,9 +15,11 @@ export const initManager = (sequelize: Sequelize) => {
         },
         restaurant_id: {
             type: DataTypes.STRING,
+            allowNull: false
         },
 
 }, { 
+    tableName:"order_status",
     sequelize
 })
 }
