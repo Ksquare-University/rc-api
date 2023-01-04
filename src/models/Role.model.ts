@@ -16,7 +16,10 @@ export const initRoleModel = async (sequelize: Sequelize) => {
             autoIncrement: true,
             primaryKey: true
         },
-        role: DataTypes.STRING
+        role: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
     
 }, {
     tableName: "role"
