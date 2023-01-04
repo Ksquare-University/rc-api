@@ -35,7 +35,7 @@ export const initUserModel = async (sequelize: Sequelize) => {
             defaultValue: false,
         }
 }, { 
-    tableName: 'users',
+    tableName: 'user',
     sequelize
 });
     await User.sync();
