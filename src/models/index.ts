@@ -11,6 +11,7 @@ import { initPaymentMethodModel } from './PaymentMethod.model';
 import { initOrderModel } from './Order.model';
 import { initOpeningDaysModel } from "./OpeningDays.model";
 import { initCourierModel } from './Courier.model';
+import { initOpeningTimesModel } from "./OpeningTimes.model";
 
 export let sequelize: Sequelize;
 const models = [
@@ -26,6 +27,7 @@ const models = [
   initOrderModel,
   initOpeningDaysModel,
   initCourierModel,
+  initOpeningTimesModel,
 ];
 
 export const startSequelize = (
