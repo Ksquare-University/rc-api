@@ -14,11 +14,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
+const models_1 = require("./models");
 const app_1 = __importDefault(require("./app"));
 const PORT = process.env.PORT;
+const DB = process.env.DB_NAME;
+const PASSWD = process.env.DB_PASS;
+const USER = process.env.DB_USER;
+const HOST = process.env.localhost;
 app_1.default.listen(PORT, () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        console.info('Express server is up and running!!!!');
+        const sequelize = (0, models_1.startSequelize)(DB, PASSWD, HOST, USER);
+        yield sequelize.sync();
+        console.info('DB and Express server is up and running!!!!');
     }
     catch (error) {
         console.error(error);
