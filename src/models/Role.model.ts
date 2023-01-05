@@ -22,7 +22,7 @@ export const initRoleModel = async (sequelize: Sequelize) => {
         }
     
 }, {
-    tableName: "role"
+    tableName: "role",
     sequelize // Instance of sequelize that reflects the connection
 })
 
