@@ -13,6 +13,8 @@ import { initOpeningDaysModel } from "./OpeningDays.model";
 import { initCourierModel } from './Courier.model';
 import { initOpeningTimesModel } from "./OpeningTimes.model";
 import { initOrderItemsModel } from "./OrderItems.model";
+import { initRoleModel } from "./Role.model";
+
 export let sequelize: Sequelize;
 const models = [
     initCity,
@@ -28,7 +30,8 @@ const models = [
     initOpeningDaysModel,
     initCourierModel,
     initOpeningTimesModel,
-    initOrderItemsModel
+    initOrderItemsModel,
+    initRoleModel
 ];
 
 export const startSequelize = (
