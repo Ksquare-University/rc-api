@@ -27,12 +27,12 @@ export const initRestaurantModel = async (sequelize: Sequelize) => {
             },
         description: DataTypes.STRING,
         city_id: { 
-            DataTypes.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false
             },
         phone_number: DataTypes.STRING,
         user_id: {
-            DataTypes.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false
             },
         is_deleted: {
@@ -40,7 +40,7 @@ export const initRestaurantModel = async (sequelize: Sequelize) => {
             defaultValue: false
         }
 }, {
-    tableName: "restaurant"
+    tableName: "restaurant",
     sequelize // Instance of sequelize that reflects the connection
 })
 
