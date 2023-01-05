@@ -5,6 +5,7 @@ import { initUserModel } from './user.model';
 import { initCity } from './city.model';
 import { initClientAddressModel } from './ClientAddress.model';
 import { initRestaurantModel } from './Restaurant.model';
+import { initBillingDetailsModel } from './BillingDetails.model';
 import { initItemModel } from './Item.model';
 
 export let sequelize: Sequelize;
@@ -15,6 +16,7 @@ const models = [
   initSaleModel,
   initClientAddressModel,
   initRestaurantModel,
+  initBillingDetailsModel,
   initItemModel,
 ];
 
