@@ -1,10 +1,15 @@
 import { Sequelize } from "sequelize";
 import { initOpeningTimesModel } from "./OpeningTimes.model";
-
-
 export let sequelize: Sequelize;
 
 const models = [initOpeningTimesModel];
+
+import { initUserModel } from "./user.model";
+import { initCity } from "./city.model";
+
+export let sequelize: Sequelize;
+const models = [initCity, initUserModel];
+
 export const startSequelize = (db_name: string, db_password: string, db_hostname: string, db_username: string) => {
     sequelize = new Sequelize(db_name, db_username, db_password, {
         dialect: 'postgres',
@@ -17,4 +22,3 @@ export const startSequelize = (db_name: string, db_password: string, db_hostname
     }
 
     return sequelize;
-}
