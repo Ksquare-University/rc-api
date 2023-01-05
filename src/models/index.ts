@@ -12,38 +12,39 @@ import { initOrderModel } from './Order.model';
 import { initOpeningDaysModel } from "./OpeningDays.model";
 import { initCourierModel } from './Courier.model';
 import { initOpeningTimesModel } from "./OpeningTimes.model";
-
+import { initOrderItemsModel } from "./OrderItems.model";
 export let sequelize: Sequelize;
 const models = [
-  initCity,
-  initUserModel,
-  initClientModel,
-  initSaleModel,
-  initClientAddressModel,
-  initRestaurantModel,
-  initBillingDetailsModel,
-  initItemModel,
-  initPaymentMethodModel,
-  initOrderModel,
-  initOpeningDaysModel,
-  initCourierModel,
-  initOpeningTimesModel,
+    initCity,
+    initUserModel,
+    initClientModel,
+    initSaleModel,
+    initClientAddressModel,
+    initRestaurantModel,
+    initBillingDetailsModel,
+    initItemModel,
+    initPaymentMethodModel,
+    initOrderModel,
+    initOpeningDaysModel,
+    initCourierModel,
+    initOpeningTimesModel,
+    initOrderItemsModel
 ];
 
 export const startSequelize = (
-  db_name: string,
-  db_password: string,
-  db_hostname: string,
-  db_username: string
+    db_name: string,
+    db_password: string,
+    db_hostname: string,
+    db_username: string
 ) => {
-  sequelize = new Sequelize(db_name, db_username, db_password, {
-    dialect: 'postgres',
-    host: db_hostname,
-  });
+    sequelize = new Sequelize(db_name, db_username, db_password, {
+        dialect: 'postgres',
+        host: db_hostname,
+    });
 
-  //This is commented for the moment when the models has been created
-  for (const initModel of models) {
-    initModel(sequelize);
-  }
-  return sequelize;
+    //This is commented for the moment when the models has been created
+    for (const initModel of models) {
+        initModel(sequelize);
+    }
+    return sequelize;
 };
