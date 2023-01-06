@@ -48,9 +48,9 @@ export const startSequelize = (
         host: db_hostname,
     });
 
-    //This is commented for the moment when the models has been created
-    for (const initModel of models) {
-        initModel(sequelize);
-    }
-    return sequelize;
+  for (const initModel of models) {
+    initModel(sequelize);
+  }
+  
+  return sequelize;
 };
