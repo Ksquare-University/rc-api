@@ -56,7 +56,7 @@ export const initSaleModel = async (sequelize: Sequelize) => {
         }
     
 }, {
-    tableName: 'sale';
+    tableName: 'sale',
     sequelize // Instance of sequelize that reflects the connection
 })
 

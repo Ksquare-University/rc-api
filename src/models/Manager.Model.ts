@@ -3,6 +3,7 @@ import { Model, InferAttributes, InferCreationAttributes, CreationOptional, Data
 export class Manager extends Model<InferAttributes<Manager>, InferCreationAttributes<Manager>> {
     declare id: CreationOptional<string>;
     declare restaurant_id: string;
+    declare client_id: number;
 }
 
 export const initManager = (sequelize: Sequelize) => {
@@ -17,6 +18,10 @@ export const initManager = (sequelize: Sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        client_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        }
 
 }, { 
     tableName:"order_status",
