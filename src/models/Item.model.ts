@@ -14,6 +14,7 @@ export class Item extends Model<
   declare id: CreationOptional<number>;
   declare name: string;
   declare price: number;
+  declare restaurant_id: number;
   declare is_deleted: CreationOptional<boolean>;
 }
 
@@ -35,6 +36,10 @@ export const initItemModel = async (sequelize: Sequelize) => {
       },
       price: {
         type: DataTypes.FLOAT,
+        allowNull: false,
+      },
+      restaurant_id:{
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
     },

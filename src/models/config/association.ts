@@ -149,6 +149,12 @@ OrderItems.belongsTo(Item, {
     foreignKey:'item_id',
 });
 
+//------------------------ I T E M --------------------------------
+
+Item.belongsTo(Restaurant, {
+    foreignKey:'restaurant_id',
+});
+
 //------------------------ C I T Y --------------------------------
 
 City.hasOne(Restaurant, {
