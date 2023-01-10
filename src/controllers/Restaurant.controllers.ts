@@ -26,7 +26,7 @@ const restaurantcontroller = {
     try {
         
         const ownerId = req.params.ownerId;
-      const resturants = await Restaurant.findAll( {where: { user_id: ownerId}});
+      const resturants = await Restaurant.findAll( {where: { owner_id: ownerId}});
       if(!resturants){
         res.status(404).json({
             error: "Restaurants not found",
@@ -46,14 +46,14 @@ const restaurantcontroller = {
   },
   createRestaurant: async (req: Request, res: Response) => {
     try {
-      const { name, description, city_id, phone_number, user_id } = req.body;
+      const { name, description, city_id, phone_number, owner_id } = req.body;
       
-      if(!name || !description || !city_id || !phone_number|| !user_id){
+      if(!name || !description || !city_id || !phone_number|| !owner_id){
         res.status(404).json({
             message: "Missing data",
           })
       }
-      const newRestaurant = Restaurant.create({name, description, city_id, phone_number, user_id});
+      const newRestaurant = Restaurant.create({name, description, city_id, phone_number, owner_id});
       
       res.status(200).json({
         message: "User created",
@@ -94,8 +94,8 @@ const restaurantcontroller = {
   },
   updateRestaurantById: async (req: Request, res: Response) => {
     try {
-      const { id, name, description, city_id, phone_number, user_id } = req.body;
-      const updateResto = await Restaurant.update({ name, description, city_id, phone_number, user_id }, { where:{id:id} },);
+      const { id, name, description, city_id, phone_number, owner_id } = req.body;
+      const updateResto = await Restaurant.update({ name, description, city_id, phone_number, owner_id }, { where:{id:id} },);
       if (!updateResto) {
         res.status(404).json({
           error: "User not found",

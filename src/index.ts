@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
-import { startSequelize } from "./models";
+import { startSequelize } from "./models/config";
 import * as admin from "firebase-admin"; // npm install firebase-admin --save
 import app from "./app";
 

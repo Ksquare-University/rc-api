@@ -8,7 +8,7 @@ export class Restaurant extends Model<InferAttributes<Restaurant>, InferCreation
     declare description: string;
     declare city_id: number;
     declare phone_number: string;
-    declare user_id: number;
+    declare owner_id: number;
     declare is_deleted: CreationOptional<boolean>;
 
 }
@@ -31,7 +31,7 @@ export const initRestaurantModel = async (sequelize: Sequelize) => {
             allowNull: false
             },
         phone_number: DataTypes.STRING,
-        user_id: {
+        owner_id: {
             type: DataTypes.INTEGER,
             allowNull: false
             },
