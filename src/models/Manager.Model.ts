@@ -24,7 +24,7 @@ export const initManager = (sequelize: Sequelize) => {
         }
 
 }, { 
-    tableName:"order_status",
+    tableName:"manager",
     sequelize
 })
 }
