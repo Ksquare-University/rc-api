@@ -1,27 +1,28 @@
 import { Model, InferAttributes, InferCreationAttributes, CreationOptional, DataTypes, Sequelize } from "sequelize";
 
 export class Manager extends Model<InferAttributes<Manager>, InferCreationAttributes<Manager>> {
-    declare id: CreationOptional<string>;
-    declare restaurant_id: string;
-    declare client_id: number;
+    declare id: CreationOptional<number>;
+    declare user_id: string;
+    declare restaurant_id: number;
+
 }
 
 export const initManager = (sequelize: Sequelize) => {
     Manager.init({
     
         id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
         },
-        restaurant_id: {
+        user_id: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        client_id: {
+        restaurant_id: {
             type: DataTypes.INTEGER,
             allowNull: false
-        }
+        },
 
 }, { 
     tableName:"manager",
