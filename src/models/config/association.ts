@@ -90,8 +90,8 @@ Restaurant.hasMany(OpeningDays, {
 
 //------------------------ M A N A G E R --------------------------------
 
-Manager.belongsTo(Client, {
-    foreignKey:'client_id', 
+Manager.belongsTo(User, {
+    foreignKey:'user_id', 
 });
 
 
