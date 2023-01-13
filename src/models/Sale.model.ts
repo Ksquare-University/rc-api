@@ -3,7 +3,7 @@ import { Model, InferAttributes, InferCreationAttributes, CreationOptional, Data
 
 export class Sale extends Model<InferAttributes<Sale>, InferCreationAttributes<Sale>> {
 
-    declare id: CreationOptional<boolean>;
+    declare id: CreationOptional<number>;
     declare order_id: number;
     declare total_price: number;
     declare total_items: number;
@@ -11,7 +11,7 @@ export class Sale extends Model<InferAttributes<Sale>, InferCreationAttributes<S
     declare payment_id: number; 
     declare address: string;
     declare city_id: number;
-    declare refrences: CreationOptional<boolean>;
+    declare refrences: CreationOptional<string>;
     declare is_deleted: CreationOptional<boolean>;
 
 }
@@ -26,7 +26,6 @@ export const initSaleModel = async (sequelize: Sequelize) => {
         },
         order_id: {
             type: DataTypes.INTEGER,
-            autoIncrement: true,
         },
         total_price: {
             type: DataTypes.DECIMAL
