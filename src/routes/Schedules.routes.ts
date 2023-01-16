@@ -11,14 +11,11 @@ router.get("/", isAuthenticated,
     isAuthorized({ roles: ["superadmin", "admin"], allowSameUser: true }) ,controller.getSchedules);
 router.get("/:id",
     isAuthenticated,
-    isAuthenticated,
     isAuthorized({ roles: ["superadmin", "admin"], allowSameUser: true }), controller.getSchedulesById);
 router.post("/new", 
     isAuthenticated,
-    isAuthenticated,
     isAuthorized({ roles: ["superadmin", "admin"], allowSameUser: true }),controller.createSchedules);
 router.delete("/:id",
-    isAuthenticated,
     isAuthenticated,
     isAuthorized({ roles: ["superadmin", "admin"], allowSameUser: true }), controller.deleteSchedule);
 
