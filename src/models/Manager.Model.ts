@@ -7,7 +7,7 @@ export class Manager extends Model<InferAttributes<Manager>, InferCreationAttrib
 
 }
 
-export const initManager = (sequelize: Sequelize) => {
+export const initManager = async (sequelize: Sequelize) => {
     Manager.init({
     
         id: {
@@ -27,5 +27,7 @@ export const initManager = (sequelize: Sequelize) => {
 }, { 
     tableName:"manager",
     sequelize
-})
-}
+});
+await Manager.sync();
+
+};

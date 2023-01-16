@@ -15,6 +15,7 @@ export class User extends Model<
 > {
   declare id: string;
   declare role: CreationOptional<Role>;
+  declare user_name: string;
   declare email: string;
   declare password: string;
   declare is_deleted: CreationOptional<boolean>;
@@ -32,6 +33,10 @@ export const initUserModel = async (sequelize: Sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
         defaultValue: "customer",
+      },
+      user_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       email: {
         type: DataTypes.STRING,

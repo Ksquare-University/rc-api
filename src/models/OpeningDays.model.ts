@@ -1,4 +1,4 @@
-import { Model, InferAttributes, InferCreationAttributes, CreationOptional, DataTypes, Sequelize } from "sequelize";
+import { Model, InferAttributes, InferCreationAttributes, CreationOptional, DataTypes, Sequelize, DateDataType, AbstractDataType } from "sequelize";
 
 
 export class OpeningDays extends Model<InferAttributes<OpeningDays>, InferCreationAttributes<OpeningDays>> {
@@ -6,8 +6,8 @@ export class OpeningDays extends Model<InferAttributes<OpeningDays>, InferCreati
     declare id: CreationOptional<number>;
     declare restaurant_id : number;
     declare day:string;
-    declare opening_hour:number;
-    declare closing_hour:number;
+    declare opening_hour: AbstractDataType;
+    declare closing_hour: AbstractDataType;
 }
 
 export const initOpeningDaysModel = async (sequelize: Sequelize) => {
@@ -28,13 +28,12 @@ export const initOpeningDaysModel = async (sequelize: Sequelize) => {
           },
         opening_hour: {
           type: DataTypes.TIME,
-          defaultValue: false,
+          defaultValue: '9:00',
         },
         closing_hour: {
           type: DataTypes.TIME,
-          defaultValue: false,
+          defaultValue: '21:00',
         },
-
 }, 
 
 {
