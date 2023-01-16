@@ -1,14 +1,13 @@
-import {Router} from "express";
+import { Router } from "express";
 import controllers from "../controllers/index";
 
-const router = Router();
+const restaurantRouter = Router();
 const controller = controllers.restaurantcontroller;
 /*TODO: MIDDLEWARES*/
-router.get("/:id",controller.getRestaurantById);
-router.get("/:ownerId",controller.getAllRestaurantsbyOwnerId);
-router.post("/new",controller.createRestaurant);
-router.delete("/:id",controller.deleteRestaurantById);
-router.post("/:id",controller.updateRestaurantById);
+restaurantRouter.get("/:id", controller.getRestaurantById);
+restaurantRouter.get("/:ownerId", controller.getAllRestaurantsbyOwnerId);
+restaurantRouter.post("/new", controller.createRestaurant);
+restaurantRouter.delete("/:id", controller.deleteRestaurantById);
+restaurantRouter.post("/:id", controller.updateRestaurantById);
 
-
-export default router;
+export default restaurantRouter;

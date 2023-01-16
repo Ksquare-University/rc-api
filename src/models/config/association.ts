@@ -1,4 +1,4 @@
-import { Client } from '../Customer.model';
+import { Customer } from '../Customer.model';
 import { Sale } from '../Sale.model';
 import { User } from '../user.model';
 import { City } from '../city.model';
@@ -64,7 +64,7 @@ User.hasOne(Owner, {
     foreignKey: 'user_id',
 });
 
-User.hasOne(Client, {
+User.hasOne(Customer, {
     foreignKey: 'user_id',
 });
 
@@ -97,15 +97,15 @@ Manager.belongsTo(User, {
 
 //------------------------ C L I E N T --------------------------------
 
-Client.hasMany(Order, {
+Customer.hasMany(Order, {
     foreignKey:'client_id',
 });
 
-Client.hasOne(ClientAddress, {
+Customer.hasOne(ClientAddress, {
     foreignKey:'client_id',
 });
 
-Client.hasOne(BillingDetails, {
+Customer.hasOne(BillingDetails, {
     foreignKey:'client_id',
 });
 

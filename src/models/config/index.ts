@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize';
-import { initClientModel } from '../Customer.model';
+import { initCustomerModel } from '../Customer.model';
 import { initSaleModel } from '../Sale.model';
 import { initUserModel } from '../user.model';
 import { initCity } from '../city.model';
@@ -19,7 +19,7 @@ export let sequelize: Sequelize;
 const models = [
     initCity,
     initUserModel,
-    initClientModel,
+    initCustomerModel,
     initSaleModel,
     initClientAddressModel,
     initRestaurantModel,
