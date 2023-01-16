@@ -15,6 +15,8 @@ export class Restaurant extends Model<
   declare name: string;
   declare description: string;
   declare city_id: number;
+  declare category: string;
+  declare delivery_fee: CreationOptional<number>;
   declare phone_number: number;
   declare owner_id: number;
   declare is_deleted: CreationOptional<boolean>;
@@ -36,6 +38,14 @@ export const initRestaurantModel = async (sequelize: Sequelize) => {
       city_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
+      },
+      category: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      delivery_fee: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
       },
       phone_number: DataTypes.INTEGER,
       owner_id: {
