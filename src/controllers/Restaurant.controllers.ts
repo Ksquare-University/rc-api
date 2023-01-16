@@ -46,14 +46,14 @@ const restaurantcontroller = {
   },
   createRestaurant: async (req: Request, res: Response) => {
     try {
-      const { name, description, city_id, phone_number, owner_id } = req.body;
+      const { name, description, city_id, category, delivery_fee, phone_number, owner_id } = req.body;
       
       if(!name || !description || !city_id || !phone_number|| !owner_id){
         res.status(404).json({
             message: "Missing data",
           })
       }
-      const newRestaurant = Restaurant.create({name, description, city_id, phone_number, owner_id});
+      const newRestaurant = Restaurant.create({name, description, city_id, category, delivery_fee, phone_number, owner_id});
       
       res.status(200).json({
         message: "User created",
