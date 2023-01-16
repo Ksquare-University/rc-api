@@ -8,6 +8,7 @@ export class OpeningDays extends Model<InferAttributes<OpeningDays>, InferCreati
     declare day:string;
     declare opening_hour: AbstractDataType;
     declare closing_hour: AbstractDataType;
+    declare is_deleted: CreationOptional<boolean>;
 }
 
 export const initOpeningDaysModel = async (sequelize: Sequelize) => {
@@ -33,6 +34,10 @@ export const initOpeningDaysModel = async (sequelize: Sequelize) => {
         closing_hour: {
           type: DataTypes.TIME,
           defaultValue: '21:00',
+        },
+        is_deleted: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
         },
 }, 
 
