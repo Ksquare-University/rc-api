@@ -3,6 +3,7 @@ import express, { Application, Request, Response } from "express";
 import { UserRouter } from "./routes/user.routes";
 import cityRoutes from "./routes/city.routes";
 import restaurantRouter from "./routes/Restaurant.routes";
+import schedulesRouter from './routes/Schedules.routes'
 // Import cors in order to access MLHTTPRequest from Origin LocalHost:3000 (React App)
 var cors = require('cors')
 
@@ -14,9 +15,5 @@ app.use(cors()) // Reference: https://stackoverflow.com/questions/57009371/acces
 app.use("/users", UserRouter);
 app.use("/city", cityRoutes);
 app.use("/restaurant", restaurantRouter);
-
-app.get("/", (req: Request, res: Response) => {
-  res.send("This App is alive :D");
-});
 
 export default app;

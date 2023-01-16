@@ -24,48 +24,48 @@ export class Sale extends Model<
 }
 
 export const initSaleModel = async (sequelize: Sequelize) => {
-  Sale.init(
-    {
-      id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-      },
-      order_id: {
-        type: DataTypes.INTEGER,
-      },
-      total_price: {
-        type: DataTypes.DECIMAL,
-      },
-      total_items: {
-        type: DataTypes.INTEGER,
-      },
-      date: {
-        type: DataTypes.DATE,
-      },
-      payment_id: {
-        type: DataTypes.INTEGER,
-      },
-      address: {
-        type: DataTypes.STRING,
-      },
-      city_id: {
-        type: DataTypes.INTEGER,
-      },
-      refrences: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      is_deleted: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
-      },
-    },
-    {
-      tableName: "sale",
-      sequelize, // Instance of sequelize that reflects the connection
-    }
-  );
+    Sale.init({
+    
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
+        order_id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: false,
+        },
+        total_price: {
+            type: DataTypes.DECIMAL
+        },
+        total_items: {
+            type: DataTypes.INTEGER
+        },
+        date: {
+            type: DataTypes.DATE
+        },
+        payment_id: {
+            type: DataTypes.INTEGER
+        },
+        address: {
+            type: DataTypes.STRING
+        },
+        city_id: {
+            type: DataTypes.INTEGER
+        },
+        refrences: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        is_deleted: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+        }
+    
+}, {
+    tableName: 'sale',
+    sequelize // Instance of sequelize that reflects the connection
+})
 
   await Sale.sync();
 };
