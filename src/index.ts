@@ -6,16 +6,20 @@ import app from "./app";
 
 admin.initializeApp(); // For firebase => loads credentials
 
-const PORT = <string>process.env.PORT;
+const DB_PORT = <number><unknown>process.env.DB_PORT ?? 5432;
 const DB_NAME = <string>process.env.DB_NAME;
 const DB_PASS = <string>process.env.DB_PASS;
 const DB_USER = <string>process.env.DB_USER;
 const DB_HOST = <string>process.env.localhost;
+const PORT = <number><unknown>process.env.PORT ?? 3000;
 
 app.listen(PORT, async () => {
     try {
-        const sequelize = startSequelize(DB_NAME, DB_PASS, DB_HOST, DB_USER);
-        await sequelize.sync(); 
+        const sequelize = await startSequelize(DB_NAME, DB_PASS, DB_HOST, DB_USER, DB_PORT);
+        await sequelize.authenticate();
+        await sequelize.sync({
+            force: false, //In order to no drop the existent data
+        }); 
         console.info('DB and Express server is up and running!') 
     } catch (error) {
         console.error(error);
