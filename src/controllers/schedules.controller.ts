@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { OpeningDays } from "../models/OpeningDays.model";
-import { OpeningTimes } from "../models/OpeningTimes.model";
 
 const SchedulesController = {
 
@@ -24,17 +23,7 @@ const SchedulesController = {
           });
       }
 
-      const data =  await Promise.all(openingDays.map(async (value) => {
-        const opening_times = await OpeningTimes.findAll(
-          {
-            where: {
-              openday_id: value.id,
-            }
-          }
-        )
-        return {...value, opening_times}
-      }));
-      _res.status(200).send(data);
+      _res.status(200).send(openingDays);
     } catch (error) {
       console.log(error);
       _res.status(500).json({
@@ -65,17 +54,7 @@ const SchedulesController = {
           });
       }
 
-      const data =  await Promise.all(openingDays.map(async (value) => {
-        const opening_times = await OpeningTimes.findAll(
-          {
-            where: {
-              openday_id: value.id,
-            }
-          }
-        )
-        return {...value, opening_times}
-      }));
-      _res.status(200).send(data);
+      _res.status(200).send(openingDays);
     } catch (error) {
       _res.status(500).json({
         message: "ERROR",
@@ -86,18 +65,11 @@ const SchedulesController = {
 
   createSchedules: async (req: Request, res: Response) => {
     try {
-      const { day, restaurant_id, init_time, end_time} = req.body;
-      const newOpeningDay = await OpeningDays.create({day, restaurant_id});
-      const newOpeningTime = await OpeningTimes.create({
-        init_time,
-        end_time,
-        openday_id: newOpeningDay.id,
-      })
+      const { day, restaurant_id, opening_hour, closing_hour} = req.body;
+      const newOpeningDay = await OpeningDays.create({day, restaurant_id, opening_hour,closing_hour });
 
-      res.status(200).json( {
-        ...newOpeningDay,
-        ...newOpeningTime
-      });
+
+      res.status(200).json(newOpeningDay);
     } catch (error) {
       console.log(error);
       res.status(500).json({
@@ -114,7 +86,7 @@ const SchedulesController = {
         is_deleted: true
         },{ 
         where: {
-          id: id,
+          id,
         }
       });
 
@@ -124,6 +96,31 @@ const SchedulesController = {
       })
       
       res.status(200).json(courseDeleted);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        message: 'Server error'
+      });
+    }
+  },
+  editSchedule: async (req: Request, res: Response) => {
+    try {
+      const { id } = req.params;
+      const {body} = req;
+
+      const courseEdited = await OpeningDays.update(
+        body,
+        { 
+        where: {
+          id,
+        }
+      });
+
+      if (!courseEdited) return res.status(404).json({
+        message: 'Schedules does not exists'
+      })
+      
+      res.status(200).json(courseEdited);
     } catch (error) {
       console.log(error);
       res.status(500).json({
