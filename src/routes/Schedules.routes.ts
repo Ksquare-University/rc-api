@@ -15,6 +15,9 @@ router.get("/:id",
 router.post("/new", 
     isAuthenticated,
     isAuthorized({ roles: ["superadmin", "admin"], allowSameUser: true }),controller.createSchedules);
+router.put("/:id",
+    isAuthenticated,
+    isAuthorized({ roles: ["superadmin", "admin"], allowSameUser: true }), controller.editSchedule);
 router.delete("/:id",
     isAuthenticated,
     isAuthorized({ roles: ["superadmin", "admin"], allowSameUser: true }), controller.deleteSchedule);
