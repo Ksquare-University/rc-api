@@ -16,7 +16,6 @@ import { Owner } from "../Owner.model";
 import { OrderStatus } from '../OrderStatus.Model';
 import { Manager } from '../Manager.Model';
 
-
 export const initDb = () =>{
 
     //Functions to create
