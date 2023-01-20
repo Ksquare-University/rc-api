@@ -12,6 +12,7 @@ import { isAuthenticated } from "../middlewares/isAuthenticated";
 import { isAuthorized } from "../middlewares/isAuthorized";
 import axios, { AxiosError } from "axios";
 
+
 export const UserRouter = Router();
 
 // ==================================  L C R U D  ==================================
