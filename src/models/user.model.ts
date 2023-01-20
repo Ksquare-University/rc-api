@@ -7,7 +7,7 @@ import {
   Sequelize,
 } from "sequelize";
 
-export type Role = "customer" | "owner" | "admin" | "superadmin";
+export type Role = "customer" | "owner" | "admin" | "superadmin" | "manager";
 
 export class User extends Model<
   InferAttributes<User>,
