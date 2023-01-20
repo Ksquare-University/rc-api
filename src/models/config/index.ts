@@ -14,25 +14,28 @@ import { initCourierModel } from '../Courier.model';
 import { initOrderItemsModel } from "../OrderItems.model";
 import { initRoleModel } from "../Role.model";
 import { initOwnerModel } from "../Owner.model";
+import { initManager } from '../Manager.Model';
+import { initOrderStatus } from '../OrderStatus.Model';
 
 export let sequelize: Sequelize;
 const models = [
     initCity,
-    initUserModel,
-    initCustomerModel,
-    initSaleModel,
-    initClientAddressModel,
-    initRestaurantModel,
-    initBillingDetailsModel,
-    initItemModel,
-    initPaymentMethodModel,
-    initOrderModel,
-    initOpeningDaysModel,
-    initCourierModel,
-    initOrderItemsModel,
     initRoleModel,
-    initOwnerModel
-
+    initUserModel,
+    initOwnerModel,
+    initCustomerModel,
+    initCourierModel,
+    initRestaurantModel,
+    initManager,
+    initOpeningDaysModel,
+    initItemModel,
+    initOrderStatus,
+    initOrderModel,
+    initOrderItemsModel,
+    initClientAddressModel,
+    initBillingDetailsModel,
+    initPaymentMethodModel,
+    initSaleModel
 ];
 
 export const startSequelize = (

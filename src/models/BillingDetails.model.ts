@@ -14,7 +14,7 @@ export class BillingDetails extends Model<
   declare id: CreationOptional<number>;
   declare owner_name: string;
   declare billing_address: string;
-  declare card_number: number;
+  declare card_number: string;
   declare cvv: number;
   declare expiration_date: Date;
   declare client_id: number;
@@ -40,7 +40,7 @@ export const initBillingDetailsModel = async (sequelize: Sequelize) => {
       },
 
       card_number: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
       },
 
