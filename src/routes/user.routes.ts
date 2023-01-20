@@ -16,7 +16,6 @@ import axios, { AxiosError } from "axios";
 export const UserRouter = Router();
 
 // ==================================  L C R U D  ==================================
-//CAMBIOS DANAE 
 
 const a = () =>{};
 // LIST - [GET] all
@@ -133,7 +132,7 @@ UserRouter.get(
   "/:userId",
   isAuthenticated,
   isAuthorized({
-    roles: ["superadmin", "admin", "owner", "customer"],
+    roles: ["superadmin", "admin"],
     allowSameUser: true,
   }),
   async (req: Request, res: Response) => {
@@ -164,7 +163,7 @@ UserRouter.put(
   "/:userId",
   isAuthenticated,
   isAuthorized({
-    roles: ["superadmin", "admin", "owner", "customer"],
+    roles: ["superadmin", "admin"],
     allowSameUser: true,
   }),
   async (req: Request, res: Response) => {
@@ -199,7 +198,7 @@ UserRouter.delete(
   "/:userId",
   isAuthenticated,
   isAuthorized({
-    roles: ["superadmin", "admin", "owner", "customer"],
+    roles: ["superadmin", "admin"],
     allowSameUser: true,
   }),
   async (req: Request, res: Response) => {
@@ -236,7 +235,7 @@ UserRouter.delete(
 UserRouter.patch(
   "/activate/:userId",
   isAuthenticated,
-  isAuthorized({ roles: ["superadmin", "admin"], allowSameUser: true }),
+  isAuthorized({ roles: ["superadmin", "admin"], allowSameUser: false }),
   async (req: Request, res: Response) => {
     const id: string = req.params["userId"];
     const userInfo = await admin.auth().getUser(id);
