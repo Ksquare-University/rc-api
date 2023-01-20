@@ -16,7 +16,6 @@ import axios, { AxiosError } from "axios";
 export const UserRouter = Router();
 
 // ==================================  L C R U D  ==================================
-//CAMBIOS DANAE 
 
 const a = () =>{};
 // LIST - [GET] all
