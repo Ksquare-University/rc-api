@@ -17,7 +17,6 @@ export const UserRouter = Router();
 
 // ==================================  L C R U D  ==================================
 
-const a = () =>{};
 // LIST - [GET] all
 // Only superadmins and admins can have access to all users info
 UserRouter.get(
