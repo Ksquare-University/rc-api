@@ -3,23 +3,23 @@ import controllers from "../controllers/index";
 import { isAuthenticated } from "../middlewares/isAuthenticated";
 import { isAuthorized } from "../middlewares/isAuthorized";
 
-const router = Router();
+const scheduleRouter = Router();
 const controller = controllers.schedulescontroller;
 /*TODO: MIDDLEWARES*/
-router.get("/", isAuthenticated,
+scheduleRouter.get("/", isAuthenticated,
     isAuthenticated,
     isAuthorized({ roles: ["superadmin", "admin"], allowSameUser: true }) ,controller.getSchedules);
-router.get("/:id",
+scheduleRouter.get("/:id",
     isAuthenticated,
     isAuthorized({ roles: ["superadmin", "admin"], allowSameUser: true }), controller.getSchedulesById);
-router.post("/new", 
+scheduleRouter.get("/restaurant/:id", controller.getSchedulesByRestaurantId);
+scheduleRouter.post("/new", 
     isAuthenticated,
     isAuthorized({ roles: ["superadmin", "admin"], allowSameUser: true }),controller.createSchedules);
-router.put("/:id",
-    isAuthenticated,
-    isAuthorized({ roles: ["superadmin", "admin"], allowSameUser: true }), controller.editSchedule);
-router.delete("/:id",
+scheduleRouter.put("/:id", controller.editSchedule);
+
+scheduleRouter.delete("/:id",
     isAuthenticated,
     isAuthorized({ roles: ["superadmin", "admin"], allowSameUser: true }), controller.deleteSchedule);
 
-export default router;
+export default scheduleRouter;
