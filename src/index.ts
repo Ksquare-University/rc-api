@@ -23,7 +23,7 @@ app.listen(PORT, async () => {
         await sequelize.sync({
             force: true, //In order to no drop the existent data
         }); 
-
+        
         initDb();
         console.info('DB and Express server is up and running!') 
     } catch (error) {
