@@ -30,7 +30,7 @@ export const initDb = () =>{
     type hour = string;
     const createRestaurant = (name:string, description:string, city_id:number, category:string, delivery_fee:number, phone_number:number, owner_id:number) => {Restaurant.create({name, description, city_id, category, delivery_fee, phone_number, owner_id})}
     const createManager = (user_id:string, restaurant_id:number) => {Manager.create({user_id, restaurant_id})}
-    const createOpening = (restaurant_id:number, day:string, opening_hour:hour, closing_hour:hour) => {OpeningDays.create({restaurant_id, day, opening_hour, closing_hour})}
+    const createOpening = (restaurant_id:number, day:string, opening_hour:string, closing_hour:string) => {OpeningDays.create({restaurant_id, day, opening_hour, closing_hour})}
     const createItems = (name:string, price:number, restaurant_id:number) => {Item.create({name, price, restaurant_id})}
 
     const createOrderStatus = (name:string) => {OrderStatus.create({name})}
@@ -111,16 +111,22 @@ export const initDb = () =>{
     createManager('rMPKhFJRc2PEes6xVZBFA0i32oG3', 5);
     createManager('7gZMUfVKHxX3dfgAPn0gQVCgSPf2', 6);
     
+
+    // createOpening(1, 'Monday',"10:00","20:00");
+    // OpeningDays.create({restaurant_id:1, day:'Monday', opening_hour:'10:00', closing_hour:'20:00', is_deleted: false});
+
+
     //Open/close hours ->Schedule?
     for(let i = 1; i<=3 ; i++){
-        createOpening(i, 'Monday', `${i+7}:00`,'18:00');
-        createOpening(i, 'Tuesday', `${i+7}:00`,'18:00');
-        createOpening(i, 'Wednesday', `${i+7}:00`,'18:00');
-        createOpening(i, 'Thursday', `${i+7}:00`,'18:00');
-        createOpening(i, 'Friday', `${i+7}:00`,'18:00');
-        createOpening(i, 'Saturday', `${i+7}:00`,'18:00');
-        createOpening(i, 'Sunday', `${i+7}:00`,'18:00');
-    }
+        createOpening(i, 'Monday', `0${i+6}:00`,'18:00');
+        createOpening(i, 'Tuesday', `0${i+6}:00`,'18:00');
+        createOpening(i, 'Wednesday', `0${i+6}:00`,'18:00');
+        createOpening(i, 'Thursday', `0${i+6}:00`,'18:00');
+        createOpening(i, 'Friday', `0${i+6}:00`,'18:00');
+        createOpening(i, 'Saturday', `0${i+6}:00`,'18:00');
+        createOpening(i, 'Sunday', `0${i+6}:00`,'18:00');
+
+    }   
     for(let i = 4; i<=6 ; i++){
         createOpening(i, 'Monday', '8:00',`${18-i}:00`);
         createOpening(i, 'Tuesday', '8:00',`${18-i}:00`);

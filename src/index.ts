@@ -19,8 +19,9 @@ app.listen(PORT, async () => {
         const sequelize = await startSequelize(DB_NAME, DB_PASS, DB_HOST, DB_USER, DB_PORT);
         await sequelize.authenticate();
         await sequelize.sync({
-            force: false, //In order to no drop the existent data
+            force: true, //In order to no drop the existent data
         }); 
+        initDb();
         console.info('DB and Express server is up and running!') 
     } catch (error) {
         console.error(error);

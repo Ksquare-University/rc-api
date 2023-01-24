@@ -89,11 +89,56 @@ const restaurantcontroller = {
       console.log(error);
     }
   },
+  activateRestaurantById: async (req: Request, res: Response) => {
+    try {
+      const id = req.params.id;
+      const resto = await Restaurant.findByPk(id);
+        if (!resto) {
+          res.status(404).json({
+            error: "User not found",
+          });
+        }
+     
+      const deleteRestaurant = await Restaurant.update({ is_deleted:false }, { where:{id:id} },);
+
+        res.status(200).json({
+          message: "Restaurant deleted",
+          deleteRestaurant,
+        })
+     
+    } catch (error) {
+      res.status(500).json({
+        message: "ERROR",
+      });
+      console.log(error);
+    }
+  },
   updateRestaurantById: async (req: Request, res: Response) => {
     try {
       const id = req.params["id"];
       const {name, description, city_id, phone_number, owner_id } = req.body;
       const updateResto = await Restaurant.update({ name, description, city_id, phone_number, owner_id }, { where:{id:id} },);
+      if (!updateResto) {
+        res.status(404).json({
+          error: "Restaurant not found",
+        });
+      }
+      res.status(200).json({
+        message: "Restaurant Updated",
+        user: updateResto,
+      })
+    } catch (error) {
+      res.status(500).json({
+        message: "ERROR",
+      });
+      console.log(error);
+    }
+  },
+  updateRestaurantByIdWithoutOwner: async (req: Request, res: Response) => {
+    try {
+      const id = req.params["id"];
+      const {name, description, city_id, phone_number} = req.body;
+      const updateResto = await Restaurant.update({ name, description, city_id, phone_number}, { where:{id:id} },);
       if (!updateResto) {
         res.status(404).json({
           error: "Restaurant not found",
