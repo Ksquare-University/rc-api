@@ -55,10 +55,9 @@ Ref: city.id - Sale.city_id
 
 //------------------------ U S E R --------------------------------
 
-// User.belongsTo(Role, {
-//     foreignKey: 'role_id',
-// });
+export const initAssociation = () =>{
 
+    
 User.hasOne(Owner, {
     foreignKey: 'user_id',
 });
@@ -71,12 +70,20 @@ User.hasOne(Courier, {
     foreignKey: 'user_id',
 });
 
+
 //------------------------ O W N E R --------------------------------
 
 Owner.hasMany(Restaurant, {
     foreignKey: 'owner_id',
 });
 
+
+//------------------------ M A N A G E R --------------------------------
+
+Manager.hasOne(User, {
+    foreignKey:'user_id', 
+});
+    
 //------------------------ R E S T A U R A N T S -------------------------------
 
 Restaurant.hasOne(Manager, {
@@ -86,14 +93,7 @@ Restaurant.hasOne(Manager, {
 Restaurant.hasMany(OpeningDays, {
     foreignKey:'restaurant_id',
 });
-
-//------------------------ M A N A G E R --------------------------------
-
-Manager.belongsTo(User, {
-    foreignKey:'user_id', 
-});
-
-
+    
 //------------------------ C L I E N T --------------------------------
 
 Customer.hasMany(Order, {
@@ -130,8 +130,12 @@ Order.belongsTo(Courier, {
     foreignKey:'courier_id',
 });
 
-Order.belongsTo(OrderStatus, {
-    foreignKey:'order_status_id',
+// Order.belongsTo(OrderStatus, {
+//     foreignKey:'order_status_id',
+// });
+
+OrderStatus.hasOne(Order,{
+    foreignKey:'order_status_idid',
 });
 
 Order.hasMany(OrderItems, {
@@ -168,3 +172,5 @@ City.hasOne(Sale, {
     foreignKey:'city_id',
 });
 
+
+}

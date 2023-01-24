@@ -81,7 +81,7 @@ export const initDb = () =>{
     createUser('7gZMUfVKHxX3dfgAPn0gQVCgSPf2', 'manager', 'Manita', 'manita@manager.com', password);
 
 
-    // //------------------------
+    //------------------------
     createClient('Brandon Hernandez', 1546855251, 'DXCISM9Dqbcr814VjXynl6w7CYC3');
     createClient('Genaro Hernandez', 1546855251, 'lHhRx3Pw4Seu5cExtWnldaSjRhM2');
     createClient('Rodrigo Hernandez', 1546855251, 'RoPXOPVJnoZcdYbdHpjDBmq31ym2');
@@ -137,30 +137,30 @@ export const initDb = () =>{
     }
 
     //Estadio Dimadon
-    createItems('Hamburger', 135, 0);
-    createItems('Tacos', 15, 0);
-    createItems('Burrito', 100, 0);
+    createItems('Hamburger', 135, 1);
+    createItems('Tacos', 15, 1);
+    createItems('Burrito', 100, 1);
     //Dimmsdale
-    createItems('The Fairly OddParents', 135, 0);
-    createItems('Magic wand', 15, 0);
-    createItems('Dragon', 100, 0);
+    createItems('The Fairly OddParents', 135, 2);
+    createItems('Magic wand', 15, 2);
+    createItems('Dragon', 100, 2);
     
     //Space X
-    createItems('Spaceship', 135, 0);
-    createItems('Space cake', 15, 0);
-    createItems('Discussion on twitter', 100, 0);
+    createItems('Spaceship', 135, 3);
+    createItems('Space cake', 15, 3);
+    createItems('Discussion on twitter', 100, 3);
     //KungPau
-    createItems('Basic sushi', 135, 0);
-    createItems('Roast bacon', 15, 0);
-    createItems('Sushi Dragon', 100, 0);
+    createItems('Basic sushi', 135, 4);
+    createItems('Roast bacon', 15, 4);
+    createItems('Sushi Dragon', 100, 4);
     //SUBWAY
-    createItems('Vegetarian', 65, 0);
-    createItems('Clasic', 25, 0);
-    createItems('Bacon', 80, 0);
+    createItems('Vegetarian', 65, 5);
+    createItems('Clasic', 25, 5);
+    createItems('Bacon', 80, 5);
     //De gusto al Carbon
-    createItems('The Fairly OddParents', 135, 0);
-    createItems('Magic wand', 15, 0);
-    createItems('Dragon', 100, 0);
+    createItems('The Fairly OddParents', 135, 6);
+    createItems('Magic wand', 15, 6);
+    createItems('Dragon', 100, 6);
 
     createOrderStatus('Waiting confimation');
     createOrderStatus('Acepted');
@@ -188,12 +188,12 @@ export const initDb = () =>{
     createBillingDetails('Brandon Rodrigez', 'Street 12 in Malaga', '1234456778911234',123, new Date(2025, 5), 1);
     createBillingDetails('Brandon Rodrigez', 'Street 12 in Malaga', '7894456112307894',123, new Date(2025, 5), 1);
 
-    createBillingDetails('Genaro Luna', 'Street 12 in Malaga', '1234456778911234',123,new Date(1737360000), 2);
+    createBillingDetails('Genaro Luna', 'Street 12 in Malaga', '1234456778911234',123,new Date(2025, 5), 2);
 
-    createBillingDetails('Rodrigo Hernandez', 'Street 12 in Malaga', '1234456778911234',123,new Date(1737360000), 3);
-    createBillingDetails('Rodrigo Hernandez', 'Street 12 in Malaga', '1234456778911234',123,new Date(1737360000), 3);
+    createBillingDetails('Rodrigo Hernandez', 'Street 12 in Malaga', '1234456778911234',123,new Date(2025, 5), 3);
+    createBillingDetails('Rodrigo Hernandez', 'Street 12 in Malaga', '1234456778911234',123,new Date(2025, 5), 3);
 
-    createBillingDetails('Dannae Diaz', 'Street 12 in Malaga', '1234456778911234',123,new Date(1737360000), 4);
+    createBillingDetails('Dannae Diaz', 'Street 12 in Malaga', '1234456778911234', 123,new Date(2025, 5), 4);
 
     createPaymentMethod('Credit card BBVA', 1);
     createPaymentMethod('Debid card Inbursa', 2);
@@ -207,5 +207,4 @@ export const initDb = () =>{
 
     createSale(1, 300, 6, new Date(), 1,'Street 12 in Malaga', 1, 'White house');
     createSale(2, 130, 3, new Date(), 2,'Street 12 in Malaga', 1, 'White house');
-
 }

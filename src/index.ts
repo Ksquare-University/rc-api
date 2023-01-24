@@ -4,6 +4,7 @@ import { startSequelize } from "./models/config";
 import * as admin from "firebase-admin"; // npm install firebase-admin --save
 import app from "./app";
 import { initDb } from './models/config/initDB'
+import { initAssociation } from "./models/config/association";
 
 admin.initializeApp(); // For firebase => loads credentials
 
@@ -21,6 +22,8 @@ app.listen(PORT, async () => {
         await sequelize.sync({
             force: true, //In order to no drop the existent data
         }); 
+        initAssociation();
+
         initDb();
         console.info('DB and Express server is up and running!') 
     } catch (error) {
