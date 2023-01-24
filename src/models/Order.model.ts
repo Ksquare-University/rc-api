@@ -16,6 +16,7 @@ export class Order extends Model<
   declare courier_id: number;
   declare order_status_id: CreationOptional<number>;
   declare restaurant_id: number;
+  static client_id: any;
 }
 
 export const initOrderModel = async (sequelize: Sequelize) => {

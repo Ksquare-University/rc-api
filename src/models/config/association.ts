@@ -60,112 +60,115 @@ Ref: city.id - Sale.city_id
 //     foreignKey: 'role_id',
 // });
 
-User.hasOne(Owner, {
-    foreignKey: 'user_id',
-});
 
-User.hasOne(Customer, {
-    foreignKey: 'user_id',
-});
+export const initAssociations = () => { 
+    User.hasOne(Owner, {
+        foreignKey: 'user_id',
+    });
 
-User.hasOne(Courier, {
-    foreignKey: 'user_id',
-});
+    User.hasOne(Customer, {
+        foreignKey: 'user_id',
+    });
 
-//------------------------ O W N E R --------------------------------
+    User.hasOne(Courier, {
+        foreignKey: 'user_id',
+    });
 
-Owner.hasMany(Restaurant, {
-    foreignKey: 'owner_id',
-});
+    //------------------------ O W N E R --------------------------------
 
-//------------------------ R E S T A U R A N T S -------------------------------
+    Owner.hasMany(Restaurant, {
+        foreignKey: 'owner_id',
+    });
 
-Restaurant.hasOne(Manager, {
-    foreignKey:'restaurant_id',
-});
+    //------------------------ R E S T A U R A N T S -------------------------------
 
-Restaurant.hasMany(OpeningDays, {
-    foreignKey:'restaurant_id',
-});
+    Restaurant.hasOne(Manager, {
+        foreignKey:'restaurant_id',
+    });
 
-//------------------------ M A N A G E R --------------------------------
+    Restaurant.hasMany(OpeningDays, {
+        foreignKey:'restaurant_id',
+    });
 
-Manager.belongsTo(User, {
-    foreignKey:'user_id', 
-});
+    //------------------------ M A N A G E R --------------------------------
+
+    Manager.belongsTo(User, {
+        foreignKey:'user_id', 
+    });
 
 
-//------------------------ C L I E N T --------------------------------
+    //------------------------ C L I E N T --------------------------------
 
-Customer.hasMany(Order, {
-    foreignKey:'client_id',
-});
+    Customer.hasMany(Order, {
+        foreignKey:'client_id',
+    });
 
-Customer.hasOne(ClientAddress, {
-    foreignKey:'client_id',
-});
+    Customer.hasOne(ClientAddress, {
+        foreignKey:'client_id',
+    });
 
-Customer.hasOne(BillingDetails, {
-    foreignKey:'client_id',
-});
+    Customer.hasOne(BillingDetails, {
+        foreignKey:'client_id',
+    });
 
-//------------------------ BILLING DETAILS --------------------------------
+    //------------------------ BILLING DETAILS --------------------------------
 
-BillingDetails.belongsTo(PaymentMethod, {
-    foreignKey:'payment_id',
-});
+    BillingDetails.belongsTo(PaymentMethod, {
+        foreignKey:'payment_id',
+    });
 
-//------------------------ PAYMENT METHODS --------------------------------
+    //------------------------ PAYMENT METHODS --------------------------------
 
-PaymentMethod.belongsTo(Sale, {
-    foreignKey:'order_status_id',
-});
+    PaymentMethod.belongsTo(Sale, {
+        foreignKey:'order_status_id',
+    });
 
-//------------------------ O R D E R --------------------------------
+    //------------------------ O R D E R --------------------------------
 
-Order.hasOne(Sale, {
-    foreignKey:'order_id',
-});
+    Order.hasOne(Sale, {
+        foreignKey:'order_id',
+    });
 
-Order.belongsTo(Courier, {
-    foreignKey:'courier_id',
-});
+    Order.belongsTo(Courier, {
+        foreignKey:'courier_id',
+    });
 
-Order.belongsTo(OrderStatus, {
-    foreignKey:'order_status_id',
-});
+    Order.belongsTo(OrderStatus, {
+        foreignKey:'order_status_id',
+    });
 
-Order.hasMany(OrderItems, {
-    foreignKey:'order_id',
-});
+    Order.hasMany(OrderItems, {
+        foreignKey:'order_id',
+    });
 
-Order.belongsTo(Restaurant, {
-    foreignKey:'restaurant_id',
-});
+    Order.belongsTo(Restaurant, {
+        foreignKey:'restaurant_id',
+    });
 
-//------------------------ ORDER ITEM --------------------------------
+    //------------------------ ORDER ITEM --------------------------------
 
-OrderItems.belongsTo(Item, {
-    foreignKey:'item_id',
-});
+    OrderItems.belongsTo(Item, {
+        foreignKey:'item_id',
+    });
 
-//------------------------ I T E M --------------------------------
+    //------------------------ I T E M --------------------------------
 
-Item.belongsTo(Restaurant, {
-    foreignKey:'restaurant_id',
-});
+    Item.belongsTo(Restaurant, {
+        foreignKey:'restaurant_id',
+    });
 
-//------------------------ C I T Y --------------------------------
+    //------------------------ C I T Y --------------------------------
 
-City.hasOne(Restaurant, {
-    foreignKey:'city_id',
-});
+    City.hasOne(Restaurant, {
+        foreignKey:'city_id',
+    });
 
-City.hasOne(ClientAddress, {
-    foreignKey:'city_id',
-});
+    City.hasOne(ClientAddress, {
+        foreignKey:'city_id',
+    });
 
-City.hasOne(Sale, {
-    foreignKey:'city_id',
-});
+    City.hasOne(Sale, {
+        foreignKey:'city_id',
+    });
 
+};
