@@ -6,8 +6,8 @@ export class OpeningDays extends Model<InferAttributes<OpeningDays>, InferCreati
     declare id: CreationOptional<number>;
     declare restaurant_id : number;
     declare day:string;
-    declare opening_hour: AbstractDataType;
-    declare closing_hour: AbstractDataType;
+    declare opening_hour: AbstractDataType | string;
+    declare closing_hour: AbstractDataType | string;
     declare is_deleted: CreationOptional<boolean>;
 }
 
