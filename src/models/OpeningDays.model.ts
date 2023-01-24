@@ -6,8 +6,8 @@ export class OpeningDays extends Model<InferAttributes<OpeningDays>, InferCreati
     declare id: CreationOptional<number>;
     declare restaurant_id : number;
     declare day:string;
-    declare opening_hour: AbstractDataType;
-    declare closing_hour: AbstractDataType;
+    declare opening_hour: string;
+    declare closing_hour: string;
     declare is_deleted: CreationOptional<boolean>;
 }
 
@@ -17,7 +17,7 @@ export const initOpeningDaysModel = async (sequelize: Sequelize) => {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
-            primaryKey: true
+            primaryKey: true, 
         },
         restaurant_id :{
             type:DataTypes.INTEGER,
@@ -26,14 +26,17 @@ export const initOpeningDaysModel = async (sequelize: Sequelize) => {
         day: {
             type: DataTypes.STRING,
             defaultValue: false,
+            allowNull: false,
           },
         opening_hour: {
-          type: DataTypes.TIME,
-          defaultValue: '9:00',
+          type: DataTypes.STRING,
+          defaultValue: '09:00',
+          allowNull: false,
         },
         closing_hour: {
-          type: DataTypes.TIME,
+          type: DataTypes.STRING,
           defaultValue: '21:00',
+          allowNull: false,
         },
         is_deleted: {
             type: DataTypes.BOOLEAN,
@@ -44,8 +47,8 @@ export const initOpeningDaysModel = async (sequelize: Sequelize) => {
 {
     tableName:'opening_days',
     sequelize // Instance of sequelize that reflects the connection
-})
+});
 
 await OpeningDays.sync();
 
-}
+};

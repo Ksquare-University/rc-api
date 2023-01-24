@@ -11,7 +11,6 @@ import { Order } from '../Order.model';
 import { OpeningDays } from "../OpeningDays.model";
 import { Courier } from '../Courier.model';
 import { OrderItems } from "../OrderItems.model";
-import { Role } from "../Role.model";//TODO.DELETE
 import { Owner } from "../Owner.model";
 import { Manager } from '../Manager.Model';
 import { OrderStatus } from '../OrderStatus.Model';
@@ -56,10 +55,6 @@ Ref: city.id - Sale.city_id
 
 //------------------------ U S E R --------------------------------
 
-// User.belongsTo(Role, {
-//     foreignKey: 'role_id',
-// });
-
 
 export const initAssociations = () => { 
     User.hasOne(Owner, {
@@ -70,34 +65,27 @@ export const initAssociations = () => {
         foreignKey: 'user_id',
     });
 
-    User.hasOne(Courier, {
-        foreignKey: 'user_id',
-    });
+
+//------------------------ O W N E R --------------------------------
 
     //------------------------ O W N E R --------------------------------
 
-    Owner.hasMany(Restaurant, {
-        foreignKey: 'owner_id',
-    });
+
+//------------------------ M A N A G E R --------------------------------
+
+Manager.hasOne(User, {
+    foreignKey:'user_id', 
+});
+    
+//------------------------ R E S T A U R A N T S -------------------------------
 
     //------------------------ R E S T A U R A N T S -------------------------------
 
-    Restaurant.hasOne(Manager, {
-        foreignKey:'restaurant_id',
-    });
-
-    Restaurant.hasMany(OpeningDays, {
-        foreignKey:'restaurant_id',
-    });
-
-    //------------------------ M A N A G E R --------------------------------
-
-    Manager.belongsTo(User, {
-        foreignKey:'user_id', 
-    });
-
-
-    //------------------------ C L I E N T --------------------------------
+Restaurant.hasMany(OpeningDays, {
+    foreignKey:'restaurant_id',
+});
+    
+//------------------------ C L I E N T --------------------------------
 
     Customer.hasMany(Order, {
         foreignKey:'client_id',
@@ -133,9 +121,13 @@ export const initAssociations = () => {
         foreignKey:'courier_id',
     });
 
-    Order.belongsTo(OrderStatus, {
-        foreignKey:'order_status_id',
-    });
+// Order.belongsTo(OrderStatus, {
+//     foreignKey:'order_status_id',
+// });
+
+OrderStatus.hasOne(Order,{
+    foreignKey:'order_status_idid',
+});
 
     Order.hasMany(OrderItems, {
         foreignKey:'order_id',
@@ -170,5 +162,4 @@ export const initAssociations = () => {
     City.hasOne(Sale, {
         foreignKey:'city_id',
     });
-
-};
+}

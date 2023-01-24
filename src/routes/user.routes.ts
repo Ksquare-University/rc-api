@@ -266,30 +266,24 @@ UserRouter.patch(
 
 // As an Admin User I can login with my credentials (email,pass) for an Admin User on FireBase
 UserRouter.post("/admin/signin",async (req: Request, res: Response) => {
-  const {email, password} = req.body;
+  const {token} = req.body;
 
-  if (!email || !password) {
-      return res.status(400).send({error: "Missing fields"});
+  if (!token) {
+    return res.status(400).send({error: "Missing fields"});
   };
 
   try {
-      //Login with firebase api ref: https://firebase.google.com/docs/reference/rest/auth
-      // Important*** pass on body request 'returnSecureToken' as true in order to generete token that can access the project and avoid "issues". Ref: https://stackoverflow.com/questions/47817069/firebase-verify-id-token-gives-firebase-id-token-has-incorrect-iss
-      const user = await axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCY-veu5OPCdhvlgRVvC0bsfNbTNmzsW6w", {email, password, returnSecureToken: true } ,{
-          headers: {
-              'Content-Type': 'application/json'  
-          }
-      }, );
-      const decodedToken: admin.auth.DecodedIdToken = await admin.auth().verifyIdToken(user.data?.idToken);
 
-      if (decodedToken.role == "admin") {
-        return res.status(200).send(user.data);
-      };
+      const decodedToken: admin.auth.DecodedIdToken = await admin.auth().verifyIdToken(token);
+      if (!decodedToken) return res.status(401).send({error: "No authentication"});
+      // if (decodedToken == "admin") {
+        return res.status(200).send(decodedToken);
+      // };
 
-      return res.status(401).send({error: "No authentication"});
+      // return res.status(401).send({error: "No authentication"});
 
   } catch (error: AxiosError | any) {
       console.log(error);
       res.status(401).send({errorName: error?.name, message: "Bad Credentials"});
   }
-})
+});

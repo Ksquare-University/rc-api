@@ -63,6 +63,37 @@ const SchedulesController = {
     }
   },
 
+  getSchedulesByRestaurantId: async (req: Request, _res: Response) => {
+    try {
+      const scheduleId = req.params["id"];
+      const openingDays = await OpeningDays.findAll({
+        where: {
+          is_deleted: false,
+          restaurant_id: scheduleId
+        }
+      })
+
+      if (!openingDays) {
+        return _res.status(404).json({
+          message: 'Schedules not found',
+        });
+      }
+
+      if(openingDays.length === 0){
+        return _res.status(404).json({
+            message: 'The schedules list is empty',
+          });
+      }
+
+      _res.status(200).send(openingDays);
+    } catch (error) {
+      _res.status(500).json({
+        message: "ERROR",
+      });
+      console.log(error);
+    }
+  },
+
   createSchedules: async (req: Request, res: Response) => {
     try {
       const { day, restaurant_id, opening_hour, closing_hour} = req.body;

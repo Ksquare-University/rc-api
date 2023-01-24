@@ -16,7 +16,6 @@ import { Owner } from "../Owner.model";
 import { OrderStatus } from '../OrderStatus.Model';
 import { Manager } from '../Manager.Model';
 
-
 export const initDb = () =>{
 
     //Functions to create
@@ -30,7 +29,7 @@ export const initDb = () =>{
     type hour = string;
     const createRestaurant = (name:string, description:string, city_id:number, category:string, delivery_fee:number, phone_number:number, owner_id:number) => {Restaurant.create({name, description, city_id, category, delivery_fee, phone_number, owner_id})}
     const createManager = (user_id:string, restaurant_id:number) => {Manager.create({user_id, restaurant_id})}
-    const createOpening = (restaurant_id:number, day:string, opening_hour:hour, closing_hour:hour) => {OpeningDays.create({restaurant_id, day, opening_hour, closing_hour})}
+    const createOpening = (restaurant_id:number, day:string, opening_hour:string, closing_hour:string) => {OpeningDays.create({restaurant_id, day, opening_hour, closing_hour})}
     const createItems = (name:string, price:number, restaurant_id:number) => {Item.create({name, price, restaurant_id})}
 
     const createOrderStatus = (name:string) => {OrderStatus.create({name})}
@@ -82,7 +81,7 @@ export const initDb = () =>{
     createUser('7gZMUfVKHxX3dfgAPn0gQVCgSPf2', 'manager', 'Manita', 'manita@manager.com', password);
 
 
-    // //------------------------
+    //------------------------
     createClient('Brandon Hernandez', 1546855251, 'DXCISM9Dqbcr814VjXynl6w7CYC3');
     createClient('Genaro Hernandez', 1546855251, 'lHhRx3Pw4Seu5cExtWnldaSjRhM2');
     createClient('Rodrigo Hernandez', 1546855251, 'RoPXOPVJnoZcdYbdHpjDBmq31ym2');
@@ -111,16 +110,22 @@ export const initDb = () =>{
     createManager('rMPKhFJRc2PEes6xVZBFA0i32oG3', 5);
     createManager('7gZMUfVKHxX3dfgAPn0gQVCgSPf2', 6);
     
+
+    // createOpening(1, 'Monday',"10:00","20:00");
+    // OpeningDays.create({restaurant_id:1, day:'Monday', opening_hour:'10:00', closing_hour:'20:00', is_deleted: false});
+
+
     //Open/close hours ->Schedule?
     for(let i = 1; i<=3 ; i++){
-        createOpening(i, 'Monday', `${i+7}:00`,'18:00');
-        createOpening(i, 'Tuesday', `${i+7}:00`,'18:00');
-        createOpening(i, 'Wednesday', `${i+7}:00`,'18:00');
-        createOpening(i, 'Thursday', `${i+7}:00`,'18:00');
-        createOpening(i, 'Friday', `${i+7}:00`,'18:00');
-        createOpening(i, 'Saturday', `${i+7}:00`,'18:00');
-        createOpening(i, 'Sunday', `${i+7}:00`,'18:00');
-    }
+        createOpening(i, 'Monday', `0${i+6}:00`,'18:00');
+        createOpening(i, 'Tuesday', `0${i+6}:00`,'18:00');
+        createOpening(i, 'Wednesday', `0${i+6}:00`,'18:00');
+        createOpening(i, 'Thursday', `0${i+6}:00`,'18:00');
+        createOpening(i, 'Friday', `0${i+6}:00`,'18:00');
+        createOpening(i, 'Saturday', `0${i+6}:00`,'18:00');
+        createOpening(i, 'Sunday', `0${i+6}:00`,'18:00');
+
+    }   
     for(let i = 4; i<=6 ; i++){
         createOpening(i, 'Monday', '8:00',`${18-i}:00`);
         createOpening(i, 'Tuesday', '8:00',`${18-i}:00`);
@@ -132,30 +137,30 @@ export const initDb = () =>{
     }
 
     //Estadio Dimadon
-    createItems('Hamburger', 135, 0);
-    createItems('Tacos', 15, 0);
-    createItems('Burrito', 100, 0);
+    createItems('Hamburger', 135, 1);
+    createItems('Tacos', 15, 1);
+    createItems('Burrito', 100, 1);
     //Dimmsdale
-    createItems('The Fairly OddParents', 135, 0);
-    createItems('Magic wand', 15, 0);
-    createItems('Dragon', 100, 0);
+    createItems('The Fairly OddParents', 135, 2);
+    createItems('Magic wand', 15, 2);
+    createItems('Dragon', 100, 2);
     
     //Space X
-    createItems('Spaceship', 135, 0);
-    createItems('Space cake', 15, 0);
-    createItems('Discussion on twitter', 100, 0);
+    createItems('Spaceship', 135, 3);
+    createItems('Space cake', 15, 3);
+    createItems('Discussion on twitter', 100, 3);
     //KungPau
-    createItems('Basic sushi', 135, 0);
-    createItems('Roast bacon', 15, 0);
-    createItems('Sushi Dragon', 100, 0);
+    createItems('Basic sushi', 135, 4);
+    createItems('Roast bacon', 15, 4);
+    createItems('Sushi Dragon', 100, 4);
     //SUBWAY
-    createItems('Vegetarian', 65, 0);
-    createItems('Clasic', 25, 0);
-    createItems('Bacon', 80, 0);
+    createItems('Vegetarian', 65, 5);
+    createItems('Clasic', 25, 5);
+    createItems('Bacon', 80, 5);
     //De gusto al Carbon
-    createItems('The Fairly OddParents', 135, 0);
-    createItems('Magic wand', 15, 0);
-    createItems('Dragon', 100, 0);
+    createItems('The Fairly OddParents', 135, 6);
+    createItems('Magic wand', 15, 6);
+    createItems('Dragon', 100, 6);
 
     createOrderStatus('Waiting confimation');
     createOrderStatus('Acepted');
@@ -183,12 +188,12 @@ export const initDb = () =>{
     createBillingDetails('Brandon Rodrigez', 'Street 12 in Malaga', '1234456778911234',123, new Date(2025, 5), 1);
     createBillingDetails('Brandon Rodrigez', 'Street 12 in Malaga', '7894456112307894',123, new Date(2025, 5), 1);
 
-    createBillingDetails('Genaro Luna', 'Street 12 in Malaga', '1234456778911234',123,new Date(1737360000), 2);
+    createBillingDetails('Genaro Luna', 'Street 12 in Malaga', '1234456778911234',123,new Date(2025, 5), 2);
 
-    createBillingDetails('Rodrigo Hernandez', 'Street 12 in Malaga', '1234456778911234',123,new Date(1737360000), 3);
-    createBillingDetails('Rodrigo Hernandez', 'Street 12 in Malaga', '1234456778911234',123,new Date(1737360000), 3);
+    createBillingDetails('Rodrigo Hernandez', 'Street 12 in Malaga', '1234456778911234',123,new Date(2025, 5), 3);
+    createBillingDetails('Rodrigo Hernandez', 'Street 12 in Malaga', '1234456778911234',123,new Date(2025, 5), 3);
 
-    createBillingDetails('Dannae Diaz', 'Street 12 in Malaga', '1234456778911234',123,new Date(1737360000), 4);
+    createBillingDetails('Dannae Diaz', 'Street 12 in Malaga', '1234456778911234', 123,new Date(2025, 5), 4);
 
     createPaymentMethod('Credit card BBVA', 1);
     createPaymentMethod('Debid card Inbursa', 2);
@@ -202,5 +207,4 @@ export const initDb = () =>{
 
     createSale(1, 300, 6, new Date(), 1,'Street 12 in Malaga', 1, 'White house');
     createSale(2, 130, 3, new Date(), 2,'Street 12 in Malaga', 1, 'White house');
-
 }
