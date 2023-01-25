@@ -1,7 +1,10 @@
 import { Request, Response } from "express";
 import { Order } from "../models/Order.model";
 import { Customer } from "../models/Customer.model";
-import { Sequelize } from "sequelize";
+import { Sequelize, where } from "sequelize";
+import { Restaurant  } from "../models/Restaurant.model";
+import { sequelize } from "../models/config";
+import { OrderStatus } from "../models/OrderStatus.Model";
 
 const OrdersController = {
 
@@ -9,13 +12,20 @@ const OrdersController = {
     try {
       console.log('sdsdsds')
       const orders = await Order.findAll({
-      attributes: ['id', 'full_name'], // SELECT id From "Todos" WHERE is_completed = true;
-      include:{
-        model:Customer,
-        where: {
-          id: Sequelize.col('Customer.id')
+      attributes: ['id'], // SELECT id From "Todos" WHERE is_completed = true;
+      include: [{
+        attributes: ['full_name'],
+        model:Customer
+        },
+        { 
+        attributes: ['name'],
+        model:Restaurant
+        },
+        { 
+        attributes: ['name'],
+        model: OrderStatus
         }
-      }
+    ]
         
     })
 
