@@ -55,6 +55,7 @@ const restaurantcontroller = {
       
       res.status(200).json({
         message: "Restaurant created",
+        id: (await newRestaurant).id
       })
       //return newRestaurant;
 
