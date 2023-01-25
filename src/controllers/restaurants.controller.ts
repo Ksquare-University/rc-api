@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { OpeningDays } from "../models/OpeningDays.model";
 import { Restaurant } from "../models/Restaurant.model";
 
 
@@ -57,7 +58,6 @@ const restaurantcontroller = {
         message: "Restaurant created",
         id: (await newRestaurant).id
       })
-      //return newRestaurant;
 
     } catch (error) {
       res.status(500).json({
@@ -156,7 +156,39 @@ const restaurantcontroller = {
       console.log(error);
     }
   },
+  getRestaurantbyOwnerId: async (req: Request, res: Response) => {
+    try {
 
+      const ownerId = req.params.ownerId;
+      const restaurant = await Restaurant.findOne({
+        where: {
+          owner_id: ownerId
+        }
+      });
+      if (!restaurant) {
+        res.status(404).json({
+          error: "Restaurant not found",
+        });
+        return;
+      }
+      const openingDays = await OpeningDays.findAll({
+        where: {
+          restaurant_id: restaurant.id
+        }
+      })
+
+      res.status(200).json({
+        restaurant,
+        openingDays,
+      });
+
+    } catch (error) {
+      res.status(500).json({
+        message: "ERROR",
+      });
+      console.log(error);
+    }
+  },
 };
 
 export default restaurantcontroller;
