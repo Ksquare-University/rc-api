@@ -1,7 +1,7 @@
 import { Router } from "express";
 import cityRoutes from "./city.routes";
 import managerRoutes from "./manager.routes";
-import restaurantRoutes from "./restaurant.routes";
+import restaurantRoutes from "./Restaurant.routes";
 import scheduleRouter from "./Schedules.routes";
 
 const router = Router();

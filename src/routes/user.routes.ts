@@ -276,9 +276,10 @@ UserRouter.post("/admin/signin",async (req: Request, res: Response) => {
 
       const decodedToken: admin.auth.DecodedIdToken = await admin.auth().verifyIdToken(token);
       if (!decodedToken) return res.status(401).send({error: "No authentication"});
-      // if (decodedToken == "admin") {
-        return res.status(200).send(decodedToken);
-      // };
+      if (decodedToken.role !== "admin") {
+        return res.status(401).send({error: "No Admin credential"});
+      };
+      res.status(200).send(decodedToken);
 
       // return res.status(401).send({error: "No authentication"});
 
