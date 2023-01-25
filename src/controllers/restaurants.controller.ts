@@ -155,7 +155,7 @@ const restaurantcontroller = {
       });
       console.log(error);
     }
-  },
+  }, 
   getRestaurantbyOwnerId: async (req: Request, res: Response) => {
     try {
 
