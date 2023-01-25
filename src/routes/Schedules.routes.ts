@@ -13,9 +13,7 @@ scheduleRouter.get("/:id",
     isAuthenticated,
     isAuthorized({ roles: ["superadmin", "admin"], allowSameUser: true }), controller.getSchedulesById);
 scheduleRouter.get("/restaurant/:id", controller.getSchedulesByRestaurantId);
-scheduleRouter.post("/new", 
-    isAuthenticated,
-    isAuthorized({ roles: ["superadmin", "admin"], allowSameUser: true }),controller.createSchedules);
+scheduleRouter.post("/new", controller.createSchedules);
 scheduleRouter.put("/:id", controller.editSchedule);
 
 scheduleRouter.delete("/:id",

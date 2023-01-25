@@ -2,7 +2,7 @@ import express, { Application, Request, Response } from "express";
 // Import routers
 import { UserRouter } from "./routes/user.routes";
 import cityRoutes from "./routes/city.routes";
-import restaurantRouter from "./routes/Restaurant.routes";
+import restaurantRouter from "./routes/restaurants.routes";
 import OrderRoutes  from "./routes/orders.routes";
 import schedulesRouter from './routes/Schedules.routes'
 import scheduleRouter from './routes/Schedules.routes'
