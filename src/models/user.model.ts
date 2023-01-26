@@ -5,9 +5,15 @@ import {
   CreationOptional,
   DataTypes,
   Sequelize,
-} from "sequelize";
+} from 'sequelize';
 
-export type Role = "customer" | "owner" | "admin" | "superadmin" | "manager";
+export type Role =
+  | 'customer'
+  | 'courier'
+  | 'owner'
+  | 'admin'
+  | 'superadmin'
+  | 'manager';
 
 export class User extends Model<
   InferAttributes<User>,
@@ -32,7 +38,7 @@ export const initUserModel = async (sequelize: Sequelize) => {
       role: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: "customer",
+        defaultValue: 'customer',
       },
       user_name: {
         type: DataTypes.STRING,
@@ -52,7 +58,7 @@ export const initUserModel = async (sequelize: Sequelize) => {
       },
     },
     {
-      tableName: "user",
+      tableName: 'user',
       sequelize,
     }
   );
