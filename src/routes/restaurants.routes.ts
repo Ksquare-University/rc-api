@@ -5,7 +5,7 @@ const restaurantRouter = Router();
 const controller = controllers.restaurantcontroller;
 /*TODO: MIDDLEWARES*/
 restaurantRouter.get("/:id", controller.getRestaurantById);
-restaurantRouter.get("/owner/:ownerId", controller.getRestaurantbyOwnerId);
+restaurantRouter.get("/hours/:restaurantId", controller.getRestaurantHoursByid);
 restaurantRouter.get("/all/:ownerId", controller.getAllRestaurantsbyOwnerId);
 restaurantRouter.post("/new", controller.createRestaurant);
 restaurantRouter.delete("/:id", controller.deleteRestaurantById);
@@ -15,3 +15,4 @@ restaurantRouter.put("/wo/:id", controller.updateRestaurantByIdWithoutOwner);
 
 
 export default restaurantRouter;
+
