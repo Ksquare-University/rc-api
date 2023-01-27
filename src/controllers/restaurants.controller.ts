@@ -156,13 +156,16 @@ const restaurantcontroller = {
       console.log(error);
     }
   }, 
-  getRestaurantbyOwnerId: async (req: Request, res: Response) => {
+  getRestaurantHoursByid: async (req: Request, res: Response) => {
     try {
 
-      const ownerId = req.params.ownerId;
+      const restaurantId = req.params.restaurantId;
       const restaurant = await Restaurant.findOne({
+        include:[{
+          model: OpeningDays
+        }],
         where: {
-          owner_id: ownerId
+         id: restaurantId
         }
       });
       if (!restaurant) {
@@ -171,15 +174,9 @@ const restaurantcontroller = {
         });
         return;
       }
-      const openingDays = await OpeningDays.findAll({
-        where: {
-          restaurant_id: restaurant.id
-        }
-      })
 
       res.status(200).json({
         restaurant,
-        openingDays,
       });
 
     } catch (error) {

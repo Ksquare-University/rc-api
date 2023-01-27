@@ -28,11 +28,11 @@ app.listen(PORT, async () => {
     initAssociation();
 
     await sequelize.sync({
-      force: true, //In order to drop the existent data, then populate the seed data (e.g. initDb())
+      force: false, //In order to drop the existent data, then populate the seed data (e.g. initDb())
     });
 
     //Run it in order to populate the seed data
-    initDb();
+    //initDb();
 
     console.info('DB and Express server is up and running!');
   } catch (error) {
