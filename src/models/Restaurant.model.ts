@@ -20,6 +20,7 @@ export class Restaurant extends Model<
   declare phone_number: number;
   declare owner_id: number;
   declare is_deleted: CreationOptional<boolean>;
+  static owner_id: any;
 }
 
 export const initRestaurantModel = async (sequelize: Sequelize) => {

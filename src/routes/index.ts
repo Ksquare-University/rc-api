@@ -1,7 +1,7 @@
 import { Router } from "express";
 import cityRoutes from "./city.routes";
 import managerRoutes from "./manager.routes";
-import restaurantRoutes from "./Restaurant.routes";
+import restaurantRoutes from "./restaurants.routes";
 import  OrderRoutes  from "./orders.routes";
 import scheduleRouter from "./Schedules.routes";
 

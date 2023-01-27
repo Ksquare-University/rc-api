@@ -1,15 +1,14 @@
 import { Router } from "express";
 import controllers from "../controllers/index";
 
-const OrderRoutes = Router();
-const controller = controllers.OrdersController;
+const SalesRoutes = Router();
+const controller = controllers.SalesController;
 
 
 
 /*TODO: MIDDLEWARES*/
-OrderRoutes.get("/", controller.getOrdersAll);
-OrderRoutes.get("/ownerClient/client/:uid", controller.getClientsByOrders);
-OrderRoutes.get("/owner/:uid", controller.getOrders);
+SalesRoutes.get("/", controller.getSalesAll);
+SalesRoutes.get("/owner/:uid", controller.getSales);
 
 
 
@@ -20,4 +19,4 @@ OrderRoutes.get("/owner/:uid", controller.getOrders);
 OrderRouter.delete("/:id", controller.deleteRestaurantById);
 OrderRouter.put("/:id", controller.updateRestaurantById); */
 
-export default OrderRoutes;
+export default SalesRoutes;

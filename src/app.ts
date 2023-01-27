@@ -6,6 +6,7 @@ import restaurantRouter from "./routes/restaurants.routes";
 import OrderRoutes  from "./routes/orders.routes";
 import schedulesRouter from './routes/Schedules.routes'
 import scheduleRouter from './routes/Schedules.routes'
+import SalesRoutes from "./routes/sales.routes";
 // Import cors in order to access MLHTTPRequest from Origin LocalHost:3000 (React App)
 var cors = require('cors')
 
@@ -19,6 +20,8 @@ app.use("/city", cityRoutes);
 app.use("/restaurant", restaurantRouter);
 app.use("/orders", OrderRoutes);
 app.use('/schedule', scheduleRouter);
+app.use('/sales', SalesRoutes);
+
 
 
 export default app;

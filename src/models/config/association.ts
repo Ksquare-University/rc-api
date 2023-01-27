@@ -73,10 +73,14 @@ User.hasOne(Courier, {
 
 //------------------------ O W N E R --------------------------------
 
-Owner.hasMany(Restaurant, {
+/* Owner.hasMany(Restaurant, {
     foreignKey: 'owner_id',
 });
+ */
 
+Restaurant.belongsTo(Owner,{
+    foreignKey:'id'
+})
 
 //------------------------ M A N A G E R --------------------------------
 
@@ -127,18 +131,21 @@ PaymentMethod.belongsTo(Sale, {
 
 //------------------------ O R D E R --------------------------------
 
-Order.hasOne(Sale, {
+/* Order.hasOne(Sale, {
     foreignKey:'order_id',
-});
+}); */
+
+Sale.belongsTo(Order,{
+    foreignKey:'id'
+})
 
 Order.belongsTo(Courier, {
     foreignKey:'courier_id',
 });
 
-Order.hasOne(OrderStatus, {
-    foreignKey:'order_status_id',
+Order.hasOne(OrderStatus,{
+    foreignKey:'id',
 });
-
 
 /* Order.belongsTo(OrderStatus,{
     foreignKey:'order_status_id',
