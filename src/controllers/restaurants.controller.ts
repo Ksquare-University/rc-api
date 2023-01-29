@@ -43,6 +43,29 @@ const restaurantcontroller = {
       console.log(error);
     }
   },
+  getAllRestaurants: async (req: Request, res: Response) => {
+    try {
+        
+      // const resturants = await Restaurant.findAll({where: { is_deleted: false}});
+      console.log('Restaurants');
+      const resturants = await Restaurant.findAll();
+
+      if(!resturants){
+        res.status(404).json({
+            error: "Restaurants not found",
+        });
+      }
+      res.status(200).json({
+        restaurants: resturants,
+      });
+
+    } catch (error) {
+      res.status(500).json({
+        message: "ERROR",
+      });
+      console.log(error);
+    }
+  },
   createRestaurant: async (req: Request, res: Response) => {
     try {
       const { name, description, city_id, category, delivery_fee, phone_number, owner_id } = req.body;

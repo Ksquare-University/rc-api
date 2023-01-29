@@ -7,6 +7,7 @@ const controller = controllers.restaurantcontroller;
 restaurantRouter.get("/:id", controller.getRestaurantById);
 restaurantRouter.get("/owner/:ownerId", controller.getRestaurantbyOwnerId);
 restaurantRouter.get("/all/:ownerId", controller.getAllRestaurantsbyOwnerId);
+restaurantRouter.get("/", controller.getAllRestaurants);
 restaurantRouter.post("/new", controller.createRestaurant);
 restaurantRouter.delete("/:id", controller.deleteRestaurantById);
 restaurantRouter.put("/activate/:id", controller.activateRestaurantById);

@@ -8,5 +8,7 @@ const controller = controllers.maangercontroller;
 
 router.get('/:id', controller.getManagerById);
 router.get('/uid/:uid', isAuthenticated, controller.getManagerByUid);
+router.get('/uid/:id', controller.getManagerByUId);
+
 
 export default router;

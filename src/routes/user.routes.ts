@@ -11,6 +11,7 @@ import {
 import { isAuthenticated } from "../middlewares/isAuthenticated";
 import { isAuthorized } from "../middlewares/isAuthorized";
 import axios, { AxiosError } from "axios";
+import { User } from "../models/user.model";
 
 
 export const UserRouter = Router();
@@ -21,8 +22,6 @@ export const UserRouter = Router();
 // Only superadmins and admins can have access to all users info
 UserRouter.get(
   "/",
-  isAuthenticated,
-  isAuthorized({ roles: ["superadmin", "admin"], allowSameUser: true }),
   async (req: Request, res: Response) => {
     try {
       const listedUsers = await getAllUsers();
@@ -145,6 +144,32 @@ UserRouter.get(
 
     try {
       const fetchedUser = await readUser(id);
+
+      res.status(200).send({ fetchedUser });
+    } catch (error) {
+      res
+        .status(400)
+        .send({
+          error: "Couldn't read user. The requested route doesn't exist",
+        });
+    }
+  }
+);
+
+// READ - [GET]
+UserRouter.get(
+  "/FBandDB/:userId",
+  async (req: Request, res: Response) => {
+    const id: string = req.params["userId"];
+
+    if (+id <= 0) {
+      return res.status(400).send({
+        error: "Invalid id",
+      });
+    }
+
+    try {
+      const fetchedUser = await User.findByPk(id);
 
       res.status(200).send({ fetchedUser });
     } catch (error) {
