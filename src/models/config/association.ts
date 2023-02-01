@@ -161,7 +161,9 @@ export const initAssociation = () => {
     foreignKey: 'item_id',
   });
 
-  //------------------------ I T E M --------------------------------
+OrderItems.hasOne(Order, {
+    foreignKey:'order_id',
+});
 
   Item.belongsTo(Restaurant, {
     foreignKey: 'restaurant_id',
