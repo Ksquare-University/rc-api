@@ -13,6 +13,7 @@ import routerAdmin from "./routes/admin.routes";
 import routerCustomer from "./routes/customer.routes";
 import addresstroller from "./controllers/customerAddress.controller";
 import routerAddress from "./routes/address.routes";
+import routerItems from "./routes/items.routes";
 // Import cors in order to access MLHTTPRequest from Origin LocalHost:3000 (React App)
 var cors = require('cors');
 
@@ -35,7 +36,7 @@ app.use('/schedule', scheduleRouter);
 app.use('/admin', routerAdmin);
 app.use('/customer', routerCustomer);
 app.use('/address', routerAddress);
-
+app.use('/items', routerItems);
 
 //PUT HERE THE ROUTES, THE ANOTHER FILE "INDEX" IN ROUTES, DON'T WORK...
 
